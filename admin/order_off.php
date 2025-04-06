@@ -43,8 +43,6 @@ function offline_order()
             </table>
         </form>
         <?php
-        // database connection
-        include './../database.php';
         // $add_qry="";
         if (isset($_POST['submit'])) {
             if ($_POST['select'] == 'o_id') {

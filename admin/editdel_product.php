@@ -1,15 +1,12 @@
 <?php
-// database connection
-include './../database.php';
 function editdel_product()
 {
     if (isset($_SESSION['admin'])) {
+        global $con;
         ?>
         <div class=" p-3 mb-5 rounded blur">
             <h4 align="center"><b>Edit Product</b></h4>
             <?php
-            // database connection
-            include './../database.php';
             // $e_id=$_GET['PEid'];
             if (isset($_GET['PEid']) || isset($_GET['PDid'])) {
                 if (isset($_GET['PDid'])) {

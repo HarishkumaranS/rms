@@ -1,8 +1,8 @@
 <?php
 function bill()
 {
-    global $con;
     if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
+        global $con;
         ?>
         <h4 align="center"><b>Counter Billing</b></h4>
         <form action="bill_pdf.php" method="post">

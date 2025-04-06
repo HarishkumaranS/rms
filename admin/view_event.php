@@ -2,6 +2,7 @@
 function view_event(): void
 {
     if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
+        global $con;
         ?>
         <style>
             a {
@@ -20,8 +21,6 @@ function view_event(): void
             <?php } ?>
         </div>
         <?php
-        // database connection
-        include './../database.php';
         $select = "SELECT * FROM event where status=1";
         $result = mysqli_query($con, $select);
         $num = mysqli_num_rows($result);

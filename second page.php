@@ -1,6 +1,6 @@
 <?php
 // database connection
-include 'database.php';
+include 'Config/db_connection.php';
 session_start();
 $user_id = null;
 if (isset($_SESSION['user_id']/*referance in login_logout.php*/)) {

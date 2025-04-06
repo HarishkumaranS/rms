@@ -55,7 +55,7 @@
 </style>
 <?php
 // database connection
-include 'database.php';
+include 'Config/db_connection.php';
 session_start();
 // login php code
 if (isset($_GET['login'])) {

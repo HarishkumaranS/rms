@@ -1,6 +1,4 @@
 <?php
-// database connection
-include './../database.php';
 function editdel_event()
 {
   if (isset($_SESSION['admin'])) {

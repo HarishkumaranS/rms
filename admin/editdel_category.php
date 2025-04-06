@@ -1,6 +1,4 @@
 <?php
-// database connection
-include './../database.php';
 function editdel_category()
 {
     if (isset($_SESSION['admin'])) {

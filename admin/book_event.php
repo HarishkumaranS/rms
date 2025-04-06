@@ -10,6 +10,7 @@
 <?php
 function book_event()
 {
+    global $con;
     if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
         global $con;
         ?>
@@ -72,8 +73,6 @@ function book_event()
         </div>
         <!-- code for insert into database -->
         <?php
-        // database connection
-        include './../database.php';
         if (!empty($_POST["submit"])) {
             $cust_name = $_POST['cust_name'];
             $number = $_POST['number'];

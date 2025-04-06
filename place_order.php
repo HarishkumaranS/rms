@@ -76,8 +76,6 @@
     }
 </style>
 <?php
-// database connection
-include 'database.php';
 if (isset($_GET['order_product'])) {
     $product_id = $_GET['order_product'];
     if (isset($user_id)) {

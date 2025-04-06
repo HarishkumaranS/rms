@@ -200,8 +200,6 @@
     }
 </style>
 <?php
-// database connection
-   include 'database.php';
 if (isset($_GET['fav_order_product'])) {
     if (isset($user_id)) {
         function fav_place_order()

@@ -1,7 +1,7 @@
 <?php
 session_start();
 // database connection
-include 'database.php';
+include 'Config/db_connection.php';
 // code for favoruit  
 include 'fav.php';
 // code for product

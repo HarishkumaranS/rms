@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2025 at 03:17 AM
+-- Generation Time: Apr 06, 2025 at 05:34 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -255,7 +255,7 @@ CREATE TABLE `fav` (
 --
 
 INSERT INTO `fav` (`fav_id`, `product_id`, `user_id`, `qty`, `c_price`, `fav_c_price`, `p_price`, `fav_p_price`) VALUES
-(7, 20, 3, 19, 91.00, 1729.00, 100.00, 1900.00);
+(7, 20, 3, 3, 91.00, 273.00, 100.00, 300.00);
 
 -- --------------------------------------------------------
 

@@ -2,6 +2,7 @@
 function insert_cat()
 {
   if (isset($_SESSION['admin'])) {
+    global $con;
     ?>
     <!-- heading -->
     <h4 align="center"><b>Add Categories</b></h4>
@@ -21,8 +22,6 @@ function insert_cat()
     </form>
     <!-- code for insert into database -->
     <?php
-    // database connection
-    include './../database.php';
     if (!empty($_POST["cat_title"])) {
       $cat_name = $_POST["cat_title"];
       $result_select = "SELECT * FROM categories WHERE cat_title='$cat_name'";

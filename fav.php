@@ -10,14 +10,10 @@
   }
 </style>
 <?php
-// database connection
-include 'database.php';
-// user id 
 $user_id = null;
-if (isset($_SESSION['user_id']/*referance in login_logout.php*/)) {
-    $user_id = $_SESSION['user_id']/*referance in login_logout.php*/ ;
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'] ;
 }
-//   echo $_SESSION['user_id'];
 // power or sub of the fav ❤️
 $select_qry = "SELECT * FROM fav WHERE user_id='$user_id'";
 $result_select = mysqli_query($con, $select_qry);
@@ -74,7 +70,6 @@ if (isset($_GET['fav'])) {
         }
     } else {
         echo "<script>window.location.href='login_logout.php?login';</script>";
-        // header('Location:login_logout.php?login');
     }
 }
 
@@ -88,11 +83,9 @@ if (isset($_GET['rfav'])) {
     $num = mysqli_num_rows($result_select);
     if ($num == 0) {
         echo "<script>window.location.href='index.php';</script>";
-        // header('Location:Food World.php');
     } else {
         // php href link
         echo "<script>window.location.href='second page.php?favorite';</script>";
-        // header('Location:second page.php?favorite');
     }
 }
 // quantity increment and decrement
@@ -276,17 +269,6 @@ function price_details()
     }
     $total_p_price = array_sum($p_price);//sum of total price in fav
     $total_c_price = array_sum($c_price);// sum of current price in fav
-    // Display product_id and qty in array in loop
-    // $length=count($product);//product_id and qty in array
-    // for($i=0;$i<$length;$i++)
-    // {
-    //     echo "(";
-    //     foreach($product[$i] as $x)
-    //     {
-    //         echo "$x-";
-    //     }
-    //     echo ")";
-    // }
     echo "<table>
             <tr>
                 <th class='p-2'>

@@ -12,6 +12,7 @@
 function insert_product()
 {
   if (isset($_SESSION['admin'])) {
+    global $con;
     ?>
     <!-- heading -->
     <div class=" p-3 mb-5 rounded blur">
@@ -47,8 +48,6 @@ function insert_product()
             <select name="product_cat" class="form-select w-100 custom-select" required id="catDropdown">
               <option value="">-Select Categories-</option>
               <?php
-              // database connection
-              include './../database.php';
               $select_cat = "SELECT * FROM categories";
               $result = mysqli_query($con, $select_cat);
               while ($row = mysqli_fetch_array($result)) {

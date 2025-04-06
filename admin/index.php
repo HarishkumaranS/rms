@@ -1,5 +1,7 @@
 <?php
 session_start();
+// Database
+include '../Config/db_connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -683,8 +685,6 @@ session_start();
         <!-- output of the button and content of the page -->
         <div class="container  text-dark" style="margin-top:7rem">
             <?php
-            // database connection
-            include './../database.php';
             if (isset($_GET["insert_cat"])) {
                 insert_cat();
             } elseif (isset($_GET["insert_product"])) {

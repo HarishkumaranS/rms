@@ -8,8 +8,7 @@
 function chart()
 {
     if (isset($_POST['submit'])) {
-        // Include database connection
-        include './../database.php';
+        global $con;
 
         // Get the lowest available date from both `user_order` and `order_off`
         $query_min_date = "SELECT MIN(date_value) as min_date FROM (

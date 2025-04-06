@@ -38,8 +38,6 @@
     }
 </style>
 <?php
-// database connection
-include 'database.php';
 if (isset($_GET['order_summary'])) {
     $order_id = $_GET['order_summary'];
     function order_summary()

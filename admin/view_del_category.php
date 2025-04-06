@@ -2,6 +2,7 @@
 function view_del_category()
 {
     if (isset($_SESSION['admin'])) {
+        global $con;
         ?>
         <style>
             a {
@@ -12,8 +13,6 @@ function view_del_category()
         <!-- heading -->
         <h4 align="center"><b>Deleted Categories</b></h4>
         <?php
-        // database connection
-        include './../database.php';
         $select_cat = "SELECT * FROM categories where status=0";
         $result_cat = mysqli_query($con, $select_cat);
         $num = mysqli_num_rows($result_cat);

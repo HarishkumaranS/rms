@@ -1,7 +1,7 @@
 <?php
 // Check if this script is being accessed directly for PDF generation
 // database connection
-include './../database.php';
+include '../Config/db_connection.php';
 
 // Check for connection error
 if (!$con) {

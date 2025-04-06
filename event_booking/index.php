@@ -1,19 +1,6 @@
 <?php
 // Database connection
-include '.././database.php';
-// CSS
-session_start();
-// page heading
-if (isset($_GET['book_hall'])) {
-    $heading = "Booking Hall";
-} else {
-    $heading = "Event Hall Booking";
-}
-function heading_event()
-{
-    global $heading;
-    echo $heading;
-}
+include '../Config/db_connection.php';
 // Check Availability form data
 if (isset($_POST['submit'])) {
     $date = $_POST['date'];
@@ -49,60 +36,8 @@ if (isset($_POST['submit'])) {
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <!-- page loder -->
     <link rel="stylesheet" href="../page loder/style.css">
-    <style>
-        *::-webkit-scrollbar {
-            display: none;
-        }
-
-        header {
-            display: flex;
-            background-color: #2F4F4F;
-            color: black;
-            height: 96px;
-        }
-
-        footer {
-            background-color: #2F4F4F;
-        }
-
-        .logo {
-            width: 70px;
-            height: 70px;
-            margin-top: -6px;
-        }
-
-        .title {
-            font-family: Algerian, broadway;
-            color: black;
-            padding: 5px 0px 0px 5px;
-        }
-
-        .img {
-            height: 83vh;
-            object-fit: contain;
-        }
-
-        .btn {
-            width: 85vw;
-        }
-        /* Default height for larger screens */
-        .carousel-inner img {
-            height: 500px; /* Keeps laptop screen unchanged */
-            object-fit: cover;
-        }
-
-        @media (max-width: 768px) {
-            .carousel-inner img {
-                height: 300px; /* Adjust height for tablets */
-            }
-        }
-
-        @media (max-width: 576px) {
-            .carousel-inner img {
-                height: 200px; /* Adjust height for mobile screens */
-            }
-        }
-    </style>
+    <!-- Include CSS File -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -126,13 +61,13 @@ if (isset($_POST['submit'])) {
     <div id="hallCarousel" class="carousel slide p-3" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="Untitled design.png" class="d-block w-100 img-fluid" alt="Event Hall 1">
+            <img src="assets/image/image(1).png" class="d-block w-100 img-fluid" alt="Event Hall 1">
         </div>
         <div class="carousel-item">
-            <img src="Untitled design(2).png" class="d-block w-100 img-fluid" alt="Event Hall 2">
+            <img src="assets/image/image(2).png" class="d-block w-100 img-fluid" alt="Event Hall 2">
         </div>
         <div class="carousel-item">
-            <img src="Untitled design(1).png" class="d-block w-100 img-fluid" alt="Event Hall 3">
+            <img src="assets/image/image(2).png" class="d-block w-100 img-fluid" alt="Event Hall 3">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#hallCarousel" data-bs-slide="prev">
@@ -251,37 +186,8 @@ if (isset($_POST['submit'])) {
 </body>
 <!-- Bootstrap JS (optional, for responsive features) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    // Function to display event cost dynamically
-    function fetchEventCost() {
-        const eventSelect = document.getElementById('event');
-        const selectedOption = eventSelect.options[eventSelect.selectedIndex];
-        const eventCost = selectedOption.getAttribute('data-cost');
-        const outputDiv = document.getElementById('output');
-        const eventCostSpan = document.getElementById('eventCost');
-
-        if (eventCost) {
-            eventCostSpan.textContent = `Rs ${eventCost}`;
-            outputDiv.classList.remove('d-none');
-        } else {
-            outputDiv.classList.add('d-none');
-        }
-    }
-    //  search box for Event
-    $(document).ready(function () {
-        // Ensure Select2 is available before initializing
-        if ($.fn.select2) {
-            $('#event').select2({
-                placeholder: "Search for an Event",
-                allowClear: true,
-                width: "100%" // Ensures it adapts to Bootstrap styles
-            });
-        } else {
-            console.error("Select2 is not loaded. Check your CDN links.");
-        }
-    });
-</script>
+<!-- Include JavaScript file -->
+<script src="assets/js/script.js"></script>
 <!-- page loder -->
 <script src="../page loder/script.js" defer></script>
 

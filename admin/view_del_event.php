@@ -2,6 +2,7 @@
 function view_del_event(): void
 {
     if (isset($_SESSION['admin'])) {
+        global $con;
         ?>
         <style>
             a {
@@ -12,8 +13,6 @@ function view_del_event(): void
         <!-- heading -->
         <h4 align="center"><b>View Deleted Event</b></h4>
         <?php
-        // database connection
-        include './../database.php';
         $select = "SELECT * FROM event where status=0";
         $result = mysqli_query($con, $select);
         $num = mysqli_num_rows($result);

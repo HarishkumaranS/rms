@@ -15,7 +15,7 @@
 function report()
 {
     if (isset($_SESSION['admin'])) {
-        global $user_name;
+        global $user_name,$con;
         if (isset($_GET['report'])) {
             ?>
             <h4 align="center"><b>Report</b></h4>
@@ -102,8 +102,6 @@ function report()
             </table>
 
             <?php
-            // database connection
-            include './../database.php';
             $add_qry = "";
             $add__date_qry = "";
             if (isset($_POST['submit']) || isset($_POST['select']) && isset($_POST['value']) || isset($_POST['f_date']) || isset($_POST['t_date'])) {

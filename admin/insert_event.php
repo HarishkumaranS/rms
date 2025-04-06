@@ -11,6 +11,7 @@
 function insert_event()
 {
   if (isset($_SESSION['admin'])) {
+    global $con;
     ?>
     <!-- heading -->
     <div class=" p-3 mb-5 rounded blur">
@@ -34,8 +35,6 @@ function insert_event()
     </div>
     <!-- code for insert into database -->
     <?php
-    // database connection
-    include './../database.php';
     if (!empty($_POST["submit"])) {
       $event_name = $_POST['event_name'];
       $event_cost = $_POST['event_cost'];

@@ -109,11 +109,10 @@
 function pending_order()
 {
   if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
+    global $con;
     ?>
     <h4 align="center"><b>Pending Order</b></h4>
     <?php
-    // database connection
-    include './../database.php';
     $select_qry = "SELECT * FROM user_order WHERE status=0";
     $result_select = mysqli_query($con, $select_qry);
     $num = mysqli_num_rows($result_select);

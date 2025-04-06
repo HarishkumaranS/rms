@@ -1,6 +1,4 @@
 <?php
-// database connection
-include './../database.php';
 function view_del_product()
 {
     if (isset($_SESSION['admin'])) {

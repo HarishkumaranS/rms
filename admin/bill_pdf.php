@@ -1,6 +1,8 @@
 <?php
+// Database Connection
+include '../Config/db_connection.php';
+use Dba\Connection;
 if (isset($_POST['submit']) && isset($_POST['cust_name'])) {
-    include './../database.php';
     require('./fpdf/fpdf.php');
     $items = [];
     // Date, Time, Bill Number (Left) and Name, Phone Number (Right) at the Same Vertical Level

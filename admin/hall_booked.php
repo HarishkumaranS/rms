@@ -2,6 +2,7 @@
 function hall_booked()
 {
     if (isset($_SESSION['admin'])) {
+        
         global $con, $user_name;
         ?>
         <h4 align="center"><b>Hall Booked</b></h4>
@@ -40,8 +41,6 @@ function hall_booked()
         </tbody>
         </table>
         <?php
-        // database connection
-        include './../database.php';
         $add_qry = "";
         if (isset($_POST['submit'])) {
             if (isset($_POST['f_date']) && isset($_POST['t_date']) && !empty($_POST['t_date']) && !empty($_POST['f_date'])) {

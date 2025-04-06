@@ -1,6 +1,5 @@
 <?php
 require('./fpdf/fpdf.php');
-include './../database.php';
 
 // Fetch Data from Database
 $add_qry = "";

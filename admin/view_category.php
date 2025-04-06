@@ -2,6 +2,7 @@
 function view_category()
 {
     if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
+        global $con;
         ?>
         <style>
             a {
@@ -20,8 +21,6 @@ function view_category()
             <?php } ?>
         </div>
         <?php
-        // database connection
-        include './../database.php';
         $select_cat = "SELECT * FROM categories where status=1";
         $result_cat = mysqli_query($con, $select_cat);
         $num = mysqli_num_rows($result_cat);
