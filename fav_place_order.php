@@ -1,204 +1,3 @@
-<style>
-    .card {
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2px;
-    }
-
-    .card-header {
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
-
-    .table {
-        margin-bottom: 0;
-    }
-
-    .table th,
-    .table td {
-        vertical-align: middle;
-    }
-
-    form input,
-    form select,
-    form textarea {
-        border-radius: 5px;
-        border: 1px solid #d0d0d0;
-    }
-
-    .btn-primary {
-        background-color: #2874f0;
-        border: none;
-    }
-
-    .btn-primary:hover {
-        background-color: #236ad4;
-    }
-
-    .btn-primary:focus {
-        box-shadow: none;
-    }
-
-    .img-fluid {
-        object-fit: cover;
-        height: 237px;
-        width: 237px;
-    }
-
-    .select_option {
-        cursor: pointer;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .navbar-brand {
-            font-size: 1.3rem;
-        }
-
-        .card-body {
-            text-align: center;
-        }
-
-        .row.g-0 .col-md-4 {
-            display: flex;
-            justify-content: center;
-        }
-
-        .row.g-0 .col-md-8 {
-            padding-top: 10px;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .card-body {
-            text-align: left;
-        }
-    }
-
-    /* green tick */
-    .confirmation-container {
-        margin: 10px;
-        background-color: white;
-        padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        max-width: 400px;
-        width: 100%;
-    }
-
-    .checkmark-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .checkmark {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background-color: #4CAF50;
-        position: relative;
-        animation: scaleUp 0.5s ease-in-out forwards;
-        /* Added zoom in effect */
-    }
-
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 0;
-        height: 0;
-        border: solid white;
-        border-width: 0 6px 6px 0;
-        transform: translate(-50%, -50%) rotate(45deg);
-        animation: drawCheck 1s ease forwards 0.5s;
-        /* Draw the tick */
-    }
-
-    h1 {
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 15px;
-    }
-
-    p {
-        font-size: 16px;
-        color: #555;
-        margin-bottom: 25px;
-    }
-
-    .order-button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 25px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .order-button:hover {
-        color: white;
-        background-color: #45a049;
-    }
-
-    /* Tick Animation */
-    @keyframes drawCheck {
-        0% {
-            width: 0;
-            height: 0;
-        }
-
-        50% {
-            width: 16px;
-            height: 0;
-        }
-
-        100% {
-            width: 16px;
-            height: 32px;
-        }
-    }
-
-    /* Scale animation for the green circle */
-    @keyframes scaleUp {
-        0% {
-            transform: scale(0);
-        }
-
-        70% {
-            transform: scale(1.2);
-            /* Slight over-scale */
-        }
-
-        100% {
-            transform: scale(1);
-            /* Pop back to full size */
-        }
-    }
-
-    /* Bounce effect after tick is drawn */
-    @keyframes bounce {
-
-        0%,
-        100% {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        50% {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-    }
-
-    /* product stock */
-    #disabled {
-        cursor: not-allowed;
-    }
-</style>
 <?php
 if (isset($_GET['fav_order_product'])) {
     if (isset($user_id)) {
@@ -220,24 +19,25 @@ if (isset($_GET['fav_order_product'])) {
                     $insert_qry = "INSERT INTO user_order(product_id,user_id,qty,total_price,o_date,d_date)values($product_id,$user_id,$product_qty, $product_price,now(),DATE_ADD(NOW(),INTERVAL 1 HOUR))";
                     $result_insert = mysqli_query($con, $insert_qry);
                     // to display the delivered date and time in order Confirmed page 
-                    $last_id=mysqli_insert_id($con);
+                    $last_id = mysqli_insert_id($con);
                     // update stock
                     $update_qry = "UPDATE product SET product_stock=product_stock-$product_qty where product_id=$product_id";
                     $result_update = mysqli_query($con, $update_qry);
                 }
                 if ($result_insert) {
                     // delivered date
-                     $select_qry="SELECT d_date from user_order Where o_id=$last_id";
-                     $result_qry=mysqli_query($con,$select_qry);
-                    $row=mysqli_fetch_array($result_qry);
+                    $select_qry = "SELECT d_date from user_order Where o_id=$last_id";
+                    $result_qry = mysqli_query($con, $select_qry);
+                    $row = mysqli_fetch_array($result_qry);
                     ?>
                     <div class="svg">
                         <div class="confirmation-container">
                             <div class="checkmark-container">
                                 <div class="checkmark"></div>
                             </div>
-                            <h1>Order Confirmed!</h1>
-                            <p>Your order has been successfully placed and will be delivered on <?php echo $row['d_date']; ?>. <br>Thank you for choosing us.</p>
+                            <h1 class="order_heading">Order Confirmed!</h1>
+                            <p class="order_detailes">Your order has been successfully placed and will be delivered on
+                                <?php echo $row['d_date']; ?>. <br>Thank you for choosing us.</p>
                             <a href="second page.php?order" class=" nav-link order-button">Go to My Order</a>
                         </div>
                     </div>
@@ -274,8 +74,9 @@ if (isset($_GET['fav_order_product'])) {
                                 <div class="card md-3">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <a href='second page.php?view=<?php echo $product_id; ?>'><img src="./admin/product_image/<?php echo $product_image; ?>"
-                                                class="img-fluid rounded-start p-2" alt="<?php echo $product_name; ?>"></a>
+                                            <a href='second page.php?view=<?php echo $product_id; ?>'><img
+                                                    src="./admin/product_image/<?php echo $product_image; ?>"
+                                                    class="img-fluid rounded-start p-2" alt="<?php echo $product_name; ?>"></a>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">

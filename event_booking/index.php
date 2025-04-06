@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
     <!-- Select2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <!-- page loder -->
-    <link rel="stylesheet" href="../page loder/style.css">
+    <link rel="stylesheet" href="../assets/page-loader/style.css">
     <!-- Include CSS File -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -59,31 +59,32 @@ if (isset($_POST['submit'])) {
         <h1 class="title text-light d-flex justify-content-center align-items-center">Event Booking</h1>
     </header>
     <div id="hallCarousel" class="carousel slide p-3" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="assets/image/image(1).png" class="d-block w-100 img-fluid" alt="Event Hall 1">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="assets/image/image(1).png" class="d-block w-100 img-fluid" alt="Event Hall 1">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/image/image(2).png" class="d-block w-100 img-fluid" alt="Event Hall 2">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/image/image(2).png" class="d-block w-100 img-fluid" alt="Event Hall 3">
+            </div>
         </div>
-        <div class="carousel-item">
-            <img src="assets/image/image(2).png" class="d-block w-100 img-fluid" alt="Event Hall 2">
-        </div>
-        <div class="carousel-item">
-            <img src="assets/image/image(2).png" class="d-block w-100 img-fluid" alt="Event Hall 3">
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#hallCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hallCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#hallCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#hallCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
 
     <div class="container mt-1 mt-md-4">
         <div class="row w-100 ">
             <div class="col-md-6 mb-3 w-100 ">
-                <button type="button" class="btn btn-primary w-100 d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#popupModal">Check
+                <button type="button" class="btn btn-primary w-100 d-flex justify-content-center align-items-center"
+                    data-bs-toggle="modal" data-bs-target="#popupModal">Check
                     Availability</button>
             </div>
         </div>
@@ -189,7 +190,7 @@ if (isset($_POST['submit'])) {
 <!-- Include JavaScript file -->
 <script src="assets/js/script.js"></script>
 <!-- page loder -->
-<script src="../page loder/script.js" defer></script>
+<script src="../assets/page-loader/script.js"></script>
 
 </html>
 <?php

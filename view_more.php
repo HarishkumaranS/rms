@@ -1,29 +1,3 @@
-<style>
-  #disabled {
-    cursor: not-allowed;
-  }
-
-  .out_stock {
-    color: red;
-  }
-
-  #blur {
-
-    filter: grayscale(100%) blur(1px);
-  }
-  @media screen and (max-width: 768px) {
-    #img{
-      margin-left: 12px;
-    }
-  }
-  .releated_p_des {
-            width: 150px;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-</style>
 <?php
 if (isset($_GET['view'])) {
   $product_id = $_GET['view'];
@@ -34,7 +8,7 @@ if (isset($_GET['view'])) {
   // to display view more product  
   function view_more()
   {
-    global $product_id, $product_stock,$con;
+    global $product_id, $product_stock, $con;
     $select_qry = "SELECT * FROM product WHERE product_id=$product_id";
     $result_select = mysqli_query($con, $select_qry);
     $row = mysqli_fetch_array($result_select);
@@ -200,19 +174,16 @@ if (isset($_GET['view'])) {
       } else { ?>
         <!-- view details -->
         <?php
-                     if(!isset($_SESSION['cart'][$product_id]['quantity']) || $_SESSION['cart'][$product_id]['quantity']==0)
-                    {
-                     $_SESSION['cart'][$product_id] = ['productId' => $product_id,'quantity' => 1];
-                    }
-                    if($_SESSION['cart'][$product_id]['quantity'] <= $row['product_stock'])
-                    {
-                      $qty= $_SESSION['cart'][$product_id]['quantity'];
-                    }
-                    else{
-                      $_SESSION['cart'][$product_id] = ['productId' => $product_id,'quantity' => $row['product_stock'] ];
-                      $qty = $_SESSION['cart'][$product_id]['quantity'];
-                    }
-                    ?>
+        if (!isset($_SESSION['cart'][$product_id]['quantity']) || $_SESSION['cart'][$product_id]['quantity'] == 0) {
+          $_SESSION['cart'][$product_id] = ['productId' => $product_id, 'quantity' => 1];
+        }
+        if ($_SESSION['cart'][$product_id]['quantity'] <= $row['product_stock']) {
+          $qty = $_SESSION['cart'][$product_id]['quantity'];
+        } else {
+          $_SESSION['cart'][$product_id] = ['productId' => $product_id, 'quantity' => $row['product_stock']];
+          $qty = $_SESSION['cart'][$product_id]['quantity'];
+        }
+        ?>
         <div class="col-12">
           <table>
             <tr>
@@ -220,7 +191,7 @@ if (isset($_GET['view'])) {
                 Price
               </th>
               <th>
-                <spam id="product_price"><?php echo $row['product_price']*$qty; ?></spam>/-
+                <spam id="product_price"><?php echo $row['product_price'] * $qty; ?></spam>/-
               </th>
             </tr>
             <tr>
@@ -228,7 +199,7 @@ if (isset($_GET['view'])) {
                 Discound
               </th>
               <th class='text-success'>-
-                <spam id="product_discount"><?php echo ($row['product_price'] - $row['product_c_price'])*$qty; ?></spam>
+                <spam id="product_discount"><?php echo ($row['product_price'] - $row['product_c_price']) * $qty; ?></spam>
                 /-
               </th>
             </tr>
@@ -237,7 +208,7 @@ if (isset($_GET['view'])) {
                 Total Amount
               </th>
               <th>
-                <spam id="total_price"><?php echo $row['product_c_price']*$qty; ?></spam>/-
+                <spam id="total_price"><?php echo $row['product_c_price'] * $qty; ?></spam>/-
               </th>
             </tr>
             <tr>
@@ -246,9 +217,10 @@ if (isset($_GET['view'])) {
               </th>
               <th>
                 <div class='quantity'>
-                  <a href='second page.php?dec_view=<?php echo $product_id; ?>' class='dec'><i class='fa-solid fa-circle-minus'></i></a>
+                  <a href='second page.php?dec_view=<?php echo $product_id; ?>' class='dec'><i
+                      class='fa-solid fa-circle-minus'></i></a>
                   <span id="count">
-                  <?php echo $qty; ?>
+                    <?php echo $qty; ?>
                   </span>
                   <a href='second page.php?inc_view=<?php echo $product_id; ?>' class='inc'><i
                       class='fa-solid fa-circle-plus'></i></a>
@@ -297,23 +269,22 @@ if (isset($_GET['inc_view'])) {
   $row = mysqli_fetch_array($result_select);
   $product_stock = $row['product_stock'];
   if (isset($_SESSION['cart'][$productId]['quantity'])) {
-    if ($_SESSION['cart'][$productId]['quantity'] < $product_stock) {        
-    $_SESSION['cart'][$productId]['quantity']++;
+    if ($_SESSION['cart'][$productId]['quantity'] < $product_stock) {
+      $_SESSION['cart'][$productId]['quantity']++;
     }
     echo "<script>window.location.href = document.referrer;</script>";
   }
- 
+
 }
-if(isset($_GET['dec_view']))
-{
-  $productId=$_GET['dec_view'];
-  if (isset($_SESSION['cart'][$productId]['quantity'])) {         
-    if ($_SESSION['cart'][$productId]['quantity'] > 1) {             
-        // Decrease the quantity by 1             
-        $_SESSION['cart'][$productId]['quantity']--;         
-    }  
-} 
-echo "<script>window.location.href = document.referrer;</script>";
+if (isset($_GET['dec_view'])) {
+  $productId = $_GET['dec_view'];
+  if (isset($_SESSION['cart'][$productId]['quantity'])) {
+    if ($_SESSION['cart'][$productId]['quantity'] > 1) {
+      // Decrease the quantity by 1             
+      $_SESSION['cart'][$productId]['quantity']--;
+    }
+  }
+  echo "<script>window.location.href = document.referrer;</script>";
 }
 ?>
 <script>
@@ -323,20 +294,20 @@ echo "<script>window.location.href = document.referrer;</script>";
     var paragraph = document.querySelector('.view_des');
 
     readMoreBtn.addEventListener('click', function () {
-        readMoreBtn.style.display='none';
-        readLessBtn.style.display='inline';
-      paragraph.style.webkitBoxOrient='horizontal';
+      readMoreBtn.style.display = 'none';
+      readLessBtn.style.display = 'inline';
+      paragraph.style.webkitBoxOrient = 'horizontal';
     });
 
     readLessBtn.addEventListener('click', function () {
-        readMoreBtn.style.display='inline';;
-        readLessBtn.style.display='none';
-      paragraph.style.webkitBoxOrient='vertical';
+      readMoreBtn.style.display = 'inline';;
+      readLessBtn.style.display = 'none';
+      paragraph.style.webkitBoxOrient = 'vertical';
     });
   });
-  document.getElementById("#total_price").addEventListener("click", function(event) {
+  document.getElementById("#total_price").addEventListener("click", function (event) {
     event.preventDefault(); // Prevents the default action (like form submission)
     console.log("Total price clicked, but no refresh!");
-});
+  });
 
 </script>

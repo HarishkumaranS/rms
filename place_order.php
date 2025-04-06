@@ -1,80 +1,3 @@
-<style>
-    .card {
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2px;
-    }
-
-    .card-header {
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
-
-    .table {
-        margin-bottom: 0;
-    }
-
-    .table th,
-    .table td {
-        vertical-align: middle;
-    }
-
-    form input,
-    form select,
-    form textarea {
-        border-radius: 5px;
-        border: 1px solid #d0d0d0;
-    }
-
-    .btn-primary {
-        background-color: #2874f0;
-        border: none;
-    }
-
-    .btn-primary:hover {
-        background-color: #236ad4;
-    }
-
-    .btn-primary:focus {
-        box-shadow: none;
-    }
-
-    .img-fluid {
-        object-fit: contain;
-        height: 237px;
-        width: 237px;
-    }
-
-    .select_option {
-        cursor: pointer;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .navbar-brand {
-            font-size: 1.3rem;
-        }
-
-        .card-body {
-            text-align: center;
-        }
-
-        .row.g-0 .col-md-4 {
-            display: flex;
-            justify-content: center;
-        }
-
-        .row.g-0 .col-md-8 {
-            padding-top: 10px;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .card-body {
-            text-align: left;
-        }
-    }
-</style>
 <?php
 if (isset($_GET['order_product'])) {
     $product_id = $_GET['order_product'];
@@ -99,8 +22,8 @@ if (isset($_GET['order_product'])) {
                 $_SESSION['cart'][$product_id] = ['productId' => $product_id, 'quantity' => $product_stock];
                 $qty = $_SESSION['cart'][$product_id]['quantity'];
             }
-            if (isset($_POST['submit']) && $qty !=0 && $qty<= $product_stock) {
-                
+            if (isset($_POST['submit']) && $qty != 0 && $qty <= $product_stock) {
+
                 // $mob_num2 = $_POST['num2'];
                 // $address = $_POST['addres'];
                 // $payment_type = $_POST['payment_type'];
@@ -124,8 +47,9 @@ if (isset($_GET['order_product'])) {
                             <div class="checkmark-container">
                                 <div class="checkmark"></div>
                             </div>
-                            <h1>Order Confirmed!</h1>
-                            <p>Your order has been successfully placed and will be delivered on <?php echo $row['d_date']; ?>. <br>Thank you
+                            <h1 class="order_heading">Order Confirmed!</h1>
+                            <p class="order_detailes">Your order has been successfully placed and will be delivered on
+                                <?php echo $row['d_date']; ?>. <br>Thank you
                                 for choosing us.</p>
                             <a href="second page.php?order" class=" nav-link order-button">Go to My Order</a>
                         </div>
@@ -231,48 +155,13 @@ if (isset($_GET['order_product'])) {
                                             <label for="mobile" class="form-label">Mobile Number 1:</label>
                                             <h5><?php echo $user_mob1; ?></h5>
                                         </div>
-                                        <!-- <div class="mb-3">
-                                            <label for="mobile" class="form-label">Mobile Number 2:</label>
-                                            <input type="tel" id="mobile" class="form-control" pattern="[0-9]{10}" required
-                                                value="
-                                                <?php 
-                                                // echo $user_mob2; 
-                                                ?>
-                                                " name="num2">
-                                        </div> -->
-                                        <!-- <div class="mb-3">
-                                            <label for="address" class="form-label">Address:</label>
-                                            <textarea id="address" class="form-control" rows="3" required
-                                                name="addres">/
-                                                <?php 
-                                                // echo $user_addres; 
-                                                ?>
-                                                </textarea>
-                                        </div> -->
-                                        <div class="mb-3">
-                                            <?php
-                                            // $select_qry = "SELECT * FROM payment";
-                                            // $resulr_qry = mysqli_query($con, $select_qry);
-
-                                            ?>
-                                            <!-- <label for="payment-method" class="form-label">Payment Method:</label>
-                                            <select id="payment-method" class="form-select select_option" name="payment_type" required>
-                                                <?php
-                                                // while ($p_row = mysqli_fetch_array($resulr_qry)) {
-                                                //     $payment_id = $p_row['payment_id'];
-                                                //     $payment_type = $p_row['payment_type'];
-                                                //     echo "<option class='select_option' value='$payment_id'>$payment_type</option>";
-                                                // }
-                                                ?>
-                                            </select> -->
-                                        </div>
                                         <?php
                                         $select_qry = "SELECT MIN(qty) AS min_qty from fav WHERE user_id=$user_id";
                                         $result_qry = mysqli_query($con, $select_qry);
                                         $row = mysqli_fetch_array($result_qry);
                                         $min_qty = $row['min_qty'];
                                         ?>
-                                        <input type="submit"name="submit"  class="btn btn-info" value="Place Order" <?php if ($qty >= $product_stock) {
+                                        <input type="submit" name="submit" class="btn btn-info" value="Place Order" <?php if ($qty >= $product_stock) {
                                             echo 'id="disabled"';
                                         } ?>>
                                     </form>

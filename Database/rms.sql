@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2025 at 05:34 AM
+-- Generation Time: Apr 06, 2025 at 08:58 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -255,7 +255,7 @@ CREATE TABLE `fav` (
 --
 
 INSERT INTO `fav` (`fav_id`, `product_id`, `user_id`, `qty`, `c_price`, `fav_c_price`, `p_price`, `fav_p_price`) VALUES
-(7, 20, 3, 3, 91.00, 273.00, 100.00, 300.00);
+(9, 21, 3, 1, 90.00, 90.00, 100.00, 100.00);
 
 -- --------------------------------------------------------
 
@@ -368,7 +368,8 @@ INSERT INTO `order_off` (`o_id`, `order_date`, `order_time`, `cust_id`, `product
 (87, '2025-03-17', '16:20:59', 9, 2, 3, 282, 'Dining'),
 (88, '2025-03-18', '14:05:32', 13, 4, 1, 97, 'Takeaway'),
 (89, '2025-03-19', '22:55:41', 24, 16, 4, 232, 'Dining'),
-(90, '2025-03-28', '01:58:56', 26, 2, 2, 188, ' Takeaway');
+(90, '2025-03-28', '01:58:56', 26, 2, 2, 188, ' Takeaway'),
+(91, '2025-04-06', '06:08:15', 26, 2, 2, 188, 'Dining');
 
 -- --------------------------------------------------------
 
@@ -399,9 +400,9 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_scale`, `product_des`, `product_keyword`, `product_cat`, `product_img`, `product_img2`, `product_img3`, `product_stock`, `product_price`, `product_off`, `product_c_price`, `status`) VALUES
 (1, 'Chicken Biryani', '300 grams of chicken biryani with With Raita and brinjal gravy', 'Chicken biryani is a fragrant and flavorful dish made with marinated chicken, basmati rice, and a blend of aromatic spices. The chicken is cooked with onions and tomatoes, then layered with rice and often infused with saffron for added richness. Garnished with fried onions and fresh herbs, it is typically served with raita and salad. Each region offers its own unique twist, making it a beloved staple in South Indian cuisine.', 'Chicken biryani recipe Best chicken biryani near me Chicken biryani delivery Authentic chicken biryani Spicy chicken biryani Chicken biryani restaurant Chicken biryani takeout Chicken biryani ingredients Hyderabadi chicken biryani Chicken biryani for parties', 'Non Veg', '240_F_777352221_cmXXFIIY9CNhIhqlcQQzdt4zVN8f7wQr.jpg', '240_F_608842413_hdYadp6uSC7c7pq6LJew9s8gPnRSgjln.jpg', '240_F_791208815_1JlhjKFNrb2P31kdGVenNk0TFI2zahGg.jpg', 31, 250, 7, 233, 1),
-(2, 'Tomato Rice', '300 grams of tomato rice with raita', 'Tomato rice is a flavorful and comforting dish made primarily with rice and ripe tomatoes. The dish typically begins with sautÃ©ing onions, garlic, and spices like mustard seeds, cumin, and turmeric. Fresh tomatoes are then added and cooked down to create a rich, tangy base. The rice is mixed in and cooked until fluffy, allowing it to absorb the vibrant flavors. Often garnished with fresh coriander and served with side dishes like raita or papadam, tomato rice is a popular choice in South Indian', 'Tomato rice recipe Best tomato rice near me Tomato rice delivery Easy tomato rice Spicy tomato rice Tomato rice restaurant Tomato rice takeout Tomato rice ingredients South Indian tomato rice Tomato rice for lunch veg', 'Veg', 'Screenshot 2024-10-12 095320.png', 'Screenshot 2024-10-12 095300.png', 'Screenshot 2024-10-12 095241.png', 46, 100, 6, 94, 1),
+(2, 'Tomato Rice', '300 grams of tomato rice with raita', 'Tomato rice is a flavorful and comforting dish made primarily with rice and ripe tomatoes. The dish typically begins with sautÃ©ing onions, garlic, and spices like mustard seeds, cumin, and turmeric. Fresh tomatoes are then added and cooked down to create a rich, tangy base. The rice is mixed in and cooked until fluffy, allowing it to absorb the vibrant flavors. Often garnished with fresh coriander and served with side dishes like raita or papadam, tomato rice is a popular choice in South Indian', 'Tomato rice recipe Best tomato rice near me Tomato rice delivery Easy tomato rice Spicy tomato rice Tomato rice restaurant Tomato rice takeout Tomato rice ingredients South Indian tomato rice Tomato rice for lunch veg', 'Veg', 'Screenshot 2024-10-12 095320.png', 'Screenshot 2024-10-12 095300.png', 'Screenshot 2024-10-12 095241.png', 44, 100, 6, 94, 1),
 (3, 'Gulab Jamun', '250 grams of gulab jamun', 'Gulab jamun is a popular Indian dessert made from khoya (milk solids) or paneer, shaped into small balls and deep-fried until golden brown. These soft, spongy balls are then soaked in a fragrant sugar syrup infused with rose water and cardamom, giving them their signature sweetness and aromatic flavor. Often served warm or at room temperature, gulab jamun is a beloved treat during festivals and celebrations, known for its rich taste and melt-in-your-mouth texture.', 'Gulab jamun recipe Best gulab jamun near me Gulab jamun delivery Homemade gulab jamun Soft gulab jamun Gulab jamun shop Gulab jamun sweets Gulab jamun price Traditional gulab jamun Gulab jamun for festivals', 'Dessert', 'IMG_20241012_131140.jpg', 'IMG_20241012_131125.jpg', 'IMG_20241012_131107.jpg', 49, 225, 5, 214, 1),
-(4, 'Chapathi', '5 pieces of chapathi', 'Chapathi is a popular Indian unleavened flatbread made from whole wheat flour. The dough is kneaded, rolled out into thin discs, and cooked on a hot griddle until it puffs up and develops a light golden color. Chapathi is known for its soft texture and is often served with a variety of curries, vegetables, or lentil dishes. It is a staple in South Indian cuisine, enjoyed for its simplicity and versatility, making it a favorite accompaniment to many meals', 'Chapathi recipe Best chapathi near me Chapathi delivery Soft chapathi Whole wheat chapathi Chapathi restaurant Chapathi takeout Chapathi with curry Homemade chapathi Chapathi for lunch', 'Starter', 'IMG_20241012_110357.jpg', 'IMG_20241012_110306.jpg', 'IMG_20241012_110451.jpg', 48, 100, 3, 97, 1),
+(4, 'Chapathi', '5 pieces of chapathi', 'Chapathi is a popular Indian unleavened flatbread made from whole wheat flour. The dough is kneaded, rolled out into thin discs, and cooked on a hot griddle until it puffs up and develops a light golden color. Chapathi is known for its soft texture and is often served with a variety of curries, vegetables, or lentil dishes. It is a staple in South Indian cuisine, enjoyed for its simplicity and versatility, making it a favorite accompaniment to many meals', 'Chapathi recipe Best chapathi near me Chapathi delivery Soft chapathi Whole wheat chapathi Chapathi restaurant Chapathi takeout Chapathi with curry Homemade chapathi Chapathi for lunch', 'Starter', 'IMG_20241012_110357.jpg', 'IMG_20241012_110306.jpg', 'IMG_20241012_110451.jpg', 46, 100, 3, 97, 1),
 (5, 'Paneer Butter Masala', '300 grams of paneer butter masala', 'Paneer butter masala is a rich and creamy North Indian dish made with paneer (Indian cottage cheese) cooked in a luscious tomato-based gravy. The dish is prepared by sautÃ©ing onions, ginger, and garlic, then blending in tomatoes and spices such as garam masala, cumin, and coriander. Cream and butter are added to create a smooth and velvety sauce, giving the dish its signature flavor. Often garnished with fresh coriander and served with naan, roti, or rice, paneer butter masala is a favorite for', 'Paneer butter masala recipe Best paneer butter masala near me Paneer butter masala delivery Authentic paneer butter masala Creamy paneer butter masala Paneer butter masala restaurant Paneer butter masala takeout Paneer butter masala ingredients Paneer butter masala with naan Paneer butter masala for parties', 'Veg', 'Screenshot 2024-10-12 084302.png', 'Screenshot 2024-10-12 084113.png', 'Screenshot 2024-10-12 084210.png', 49, 250, 7, 233, 1),
 (6, 'Mutton Gravy', '300 grams of mutton gravy', 'Mutton gravy is a hearty and flavorful dish made from tender pieces of mutton cooked in a rich and aromatic sauce. The dish typically features a base of sautÃ©ed onions, tomatoes, and a blend of spices such as ginger, garlic, cumin, coriander, and garam masala. Slow-cooking the mutton allows it to absorb the flavors of the spices, resulting in a savory and satisfying dish. Often garnished with fresh coriander and served alongside rice or bread, mutton gravy is cherished for its depth of flavor a', 'Mutton gravy recipe Best mutton gravy near me Mutton gravy delivery Authentic mutton gravy Spicy mutton gravy Mutton gravy restaurant Mutton curry takeout Mutton gravy ingredients Mutton gravy with rice Mutton gravy for special occasions', 'Non Veg', 'IMG_20241012_130920.jpg', 'IMG_20241012_130936.jpg', 'IMG_20241012_130953.jpg', 50, 350, 9, 319, 1),
 (7, 'Laddu', '200 grams of laddu', 'Laddu is a popular Indian sweet made from various ingredients, most commonly chickpea flour (besan), wheat flour, or semolina, combined with sugar and ghee (clarified butter). The mixture is cooked, shaped into round balls, and often garnished with nuts or dried fruits. Each region in India has its own variations, such as motichoor laddu or boondi laddu, each offering unique textures and flavors. Laddu is often enjoyed during festivals and celebrations, known for its rich taste and delightful sw', 'Laddu recipe Best laddu near me Laddu delivery Traditional laddu Besan laddu Laddu shop Laddu for festivals Homemade laddu Laddu ingredients Sweet laddu takeout', 'Dessert', 'IMG_20241012_105955.jpg', 'IMG_20241012_105937.jpg', 'IMG_20241012_110013.jpg', 46, 190, 12, 167, 1),
@@ -418,7 +419,7 @@ INSERT INTO `product` (`product_id`, `product_name`, `product_scale`, `product_d
 (18, 'Veg Noodles', '300 grams of veg noodles', 'Veg noodles are a popular dish made with boiled and stir-fried noodles, mixed with a variety of vegetables such as carrots, bell peppers, and cabbage. The noodles are tossed in sauces like soy sauce, chili sauce, and vinegar, creating a flavorful and satisfying meal. Often garnished with spring onions and served hot, veg noodles are a quick and nutritious option enjoyed by people of all ages. They are commonly found in street food stalls and restaurants, making them a favorite comfort food.', 'Veg noodles recipe Best veg noodles near me Veg noodles delivery Chinese veg noodles Spicy veg noodles Veg noodles restaurant Veg noodles takeout Veg noodles ingredients Veg noodles for lunch Instant veg noodles', 'Veg', 'IMG_20241012_181120.jpg', 'IMG_20241012_181106.jpg', 'IMG_20241012_181051.jpg', 0, 100, 6, 94, 1),
 (19, 'Chicken Noodles', '300 grams of chicken noodles', 'Chicken noodles are a delicious and filling dish made with tender pieces of chicken stir-fried with noodles and a medley of vegetables like bell peppers, carrots, and cabbage. The dish is typically seasoned with sauces such as soy sauce, oyster sauce, and chili sauce, giving it a rich and savory flavor. Often garnished with spring onions and served hot, chicken noodles are a popular choice for a quick meal, loved for their balance of protein and carbs. They are commonly found in street food stal', 'Chicken noodles recipe Best chicken noodles near me Chicken noodles delivery Spicy chicken noodles Chicken chow mein Chicken noodles restaurant Chicken noodles takeout Chicken noodles ingredients Chicken noodles for lunch Instant chicken noodles', 'Non Veg', 'IMG_20241012_181004.jpg', 'IMG_20241012_181022.jpg', 'IMG_20241012_181035.jpg', 50, 180, 10, 162, 1),
 (20, 'Brinjal Gravy', '300 grams of brinjal gravy', 'Brinjal gravy, also known as eggplant curry, is a flavorful vegetarian dish made with tender brinjal (eggplant) cooked in a spiced tomato and onion sauce. The brinjal is typically sautÃ©ed with a blend of spices, including cumin, coriander, and garam masala, which enhances its natural flavor. The gravy is often creamy and rich, making it a perfect accompaniment to rice, chapathi, or naan. This dish is popular in South Indian cuisine and is loved for its savory taste and hearty texture.', 'Brinjal gravy, also known as eggplant curry, is a flavorful vegetarian dish made with tender brinjal (eggplant) cooked in a spiced tomato and onion sauce. The brinjal is typically sautÃ©ed with a blend of spices, including cumin, coriander, and garam masala, which enhances its natural flavor. The gravy is often creamy and rich, making it a perfect accompaniment to rice, chapathi, or naan. This dish is popular in South Indian cuisine and is loved for its savory taste and hearty texture.', 'Veg', 'IMG_20241012_180748.jpg', 'IMG_20241012_180800.jpg', 'IMG_20241012_180815.jpg', 50, 100, 9, 91, 1),
-(21, 'Veg Soup', '250 ml of Veg Soup', 'Veg soup is a comforting and nutritious dish made from a variety of vegetables simmered in vegetable broth or water. The soup is often blended to a smooth consistency or left chunky, depending on preference. Common ingredients include carrots, peas, beans, and tomatoes, seasoned with herbs and spices like garlic, ginger, and pepper. Veg soup is not only a warm and hearty option but also a great way to incorporate a range of vegetables into your diet, making it a popular starter or light meal.', 'Veg soup recipe Best veg soup near me Veg soup delivery Healthy vegetable soup Spicy veg soup Veg soup restaurant Veg soup takeout Veg soup ingredients Creamy veg soup Homemade veg soup', 'Starter', 'IMG_20241012_180628.jpg', 'IMG_20241012_180608.jpg', 'IMG_20241012_180645.jpg', 50, 100, 10, 90, 1),
+(21, 'Veg Soup', '250 ml of Veg Soup', 'Veg soup is a comforting and nutritious dish made from a variety of vegetables simmered in vegetable broth or water. The soup is often blended to a smooth consistency or left chunky, depending on preference. Common ingredients include carrots, peas, beans, and tomatoes, seasoned with herbs and spices like garlic, ginger, and pepper. Veg soup is not only a warm and hearty option but also a great way to incorporate a range of vegetables into your diet, making it a popular starter or light meal.', 'Veg soup recipe Best veg soup near me Veg soup delivery Healthy vegetable soup Spicy veg soup Veg soup restaurant Veg soup takeout Veg soup ingredients Creamy veg soup Homemade veg soup', 'Starter', 'IMG_20241012_180628.jpg', 'IMG_20241012_180608.jpg', 'IMG_20241012_180645.jpg', 49, 100, 10, 90, 1),
 (22, 'Chicken 65', '200 grams of chicken 65', 'Chicken 65 is a popular South Indian appetizer made from marinated and deep-fried chicken pieces, known for their spicy and tangy flavor. The chicken is typically coated with a mixture of yogurt, spices, and red chili powder, then fried until crispy. Often garnished with curry leaves and served with a side of mint chutney or lemon wedges, Chicken 65 is a favorite for its bold taste and crunchy texture. Itâ€™s commonly enjoyed as a starter in restaurants and at parties, making it a beloved dish i', 'Chicken 65 recipe Best Chicken 65 near me Chicken 65 delivery Spicy Chicken 65 Chicken 65 restaurant Chicken 65 takeout Chicken 65 ingredients Authentic Chicken 65 Chicken 65 appetizer Crispy Chicken 65', 'Non Veg', 'IMG_20241012_181258.jpg', 'IMG_20241012_181245.jpg', 'IMG_20241012_181230.jpg', 50, 200, 10, 180, 1);
 
 -- --------------------------------------------------------
@@ -570,7 +571,9 @@ INSERT INTO `user_order` (`o_id`, `product_id`, `user_id`, `qty`, `total_price`,
 (85, 8, 13, 2, 128, 1, '2025-03-21 18:10:00', '2025-03-21 19:10:00'),
 (86, 2, 15, 1, 94, 1, '2025-03-22 23:59:59', '2025-03-23 00:59:59'),
 (87, 15, 3, 3, 810, 1, '2025-03-27 18:10:29', '2025-03-27 18:11:08'),
-(88, 16, 3, 4, 232, 0, '2025-03-29 07:16:25', '2025-03-29 08:16:25');
+(88, 16, 3, 4, 232, 0, '2025-03-29 07:16:25', '2025-03-29 08:16:25'),
+(89, 21, 3, 1, 90, 0, '2025-04-06 11:36:49', '2025-04-06 12:36:49'),
+(90, 4, 3, 2, 194, 0, '2025-04-06 12:22:49', '2025-04-06 13:22:49');
 
 --
 -- Indexes for dumped tables
@@ -674,13 +677,13 @@ ALTER TABLE `event_booking`
 -- AUTO_INCREMENT for table `fav`
 --
 ALTER TABLE `fav`
-  MODIFY `fav_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `fav_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `order_off`
 --
 ALTER TABLE `order_off`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -698,7 +701,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_order`
 --
 ALTER TABLE `user_order`
-  MODIFY `o_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `o_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

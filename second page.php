@@ -68,9 +68,11 @@ function heading()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php heading(); ?></title>
     <!-- logo in title bar -->
-    <link rel="icon" href="././image/logo.png" type="image/png">
-    <!-- css link -->
-    <link rel="stylesheet" href="food.css">
+    <link rel="icon" href="assets/image/logo.png" type="image/png">
+    <!-- Include CSS File -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Include component CSS File -->
+    <link rel="stylesheet" href="assets/css/component.css">
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -86,132 +88,7 @@ function heading()
     <!-- bootstrap js link -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- page loder css -->
-    <link rel="stylesheet" href="./page loder/style.css">
-    <style>
-        *::-webkit-scrollbar {
-            display: none;
-        }
-
-        .navbar-custom {
-            background-color: #2F4F4F;
-            /* nav bar blue */
-        }
-
-        .navbar-custom .navbar-brand,
-        .navbar-custom .nav-link {
-            color: black;
-        }
-
-        .navbar-custom .nav-link .fa {
-            font-size: 20px;
-        }
-
-        /* quantity in fav */
-        .quantity {
-            border: 2px outset black;
-            width: 4rem;
-            text-align: center;
-            margin: 0.5rem 0px;
-            border-radius: 6px;
-        }
-
-        .inc {
-            color: red;
-        }
-
-        .dec {
-            color: green;
-        }
-
-        .inc:hover {
-            color: gray;
-        }
-
-        .dec:hover {
-            color: gray;
-        }
-
-        /* fav price details */
-        table {
-            width: 300px;
-        }
-
-        /* product card des */
-        .product-scale {
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* view more */
-        .view_image {
-            object-fit: contain;
-            margin: 2px;
-        }
-
-        .view {
-            border: 2px outset wheat;
-            background-color: #D7E4C0;
-            border-radius: 5px;
-            margin-left: 15px;
-            margin-bottom: 1rem;
-        }
-
-        .view_des {
-            text-align: justify;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .releated_product {
-            list-style: none;
-            overflow: scroll;
-            height: auto;
-            margin-left: -50px;
-            border-top: 2px solid rgb(246, 238, 238);
-            border-bottom: 2px solid rgb(246, 238, 238);
-            padding-top: 0.3rem;
-            padding-bottom: 0.3rem;
-        }
-
-        .releated_p_item {
-
-            margin-right: 0.3rem;
-        }
-
-        .releated_p_des {
-            width: 150px;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* svg inage in my order */
-        .svg {
-            width: 100vw;
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-        }
-
-        /* aero cursor  */
-        p,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        table {
-            cursor: default;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/page-loader/style.css">
 </head>
 
 <body>
@@ -232,12 +109,10 @@ function heading()
         <!-- nav bar -->
         <nav class="navbar navbar-expand-lg navbar-custom">
             <!-- back button -->
-            <!-- script is end the page  -->
-            <!-- script is present in end of page -->
             <a href="#" id="back"><i class="fas fa-arrow-left text-light m-3"></i><a>
                     <!-- heading and logo -->
                     <a class="navbar-brand" href="#">
-                        <img src="././image/logo.png" alt="FoodWorld logo" height="30" style="margin-top: -5px;"><b
+                        <img src="assets/image/logo.png" alt="FoodWorld logo" height="30" style="margin-top: -5px;"><b
                             class="pl-2 p-2 "
                             style="color:white"><?php heading();/*function present in top of page*/ ?></b>
                     </a>
@@ -333,7 +208,7 @@ function heading()
         });
     </script>
     <!-- page loder js -->
-    <script src="./page loder/script.js"></script>
+    <script src="assets/page-loader/script.js"></script>
 </body>
 
 </html>

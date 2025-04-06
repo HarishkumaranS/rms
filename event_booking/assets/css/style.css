@@ -33,20 +33,24 @@ footer {
 .btn {
     width: 85vw;
 }
+
 /* Default height for larger screens */
 .carousel-inner img {
-    height: 500px; /* Keeps laptop screen unchanged */
+    height: 500px;
+    /* Keeps laptop screen unchanged */
     object-fit: cover;
 }
 
 @media (max-width: 768px) {
     .carousel-inner img {
-        height: 300px; /* Adjust height for tablets */
+        height: 300px;
+        /* Adjust height for tablets */
     }
 }
 
 @media (max-width: 576px) {
     .carousel-inner img {
-        height: 200px; /* Adjust height for mobile screens */
+        height: 200px;
+        /* Adjust height for mobile screens */
     }
 }

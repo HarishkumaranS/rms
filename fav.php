@@ -1,18 +1,7 @@
-<style>
-    #disabled
-  {
-    cursor:not-allowed;
-  }
-  #blur
-  {
-    
-    filter: grayscale(100%) blur(1px);
-  }
-</style>
 <?php
 $user_id = null;
 if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'] ;
+    $user_id = $_SESSION['user_id'];
 }
 // power or sub of the fav ❤️
 $select_qry = "SELECT * FROM fav WHERE user_id='$user_id'";
@@ -52,13 +41,10 @@ if (isset($_GET['fav'])) {
         $c_price = $row['product_c_price'];
         $p_price = $row['product_price'];
         //local qty
-        if(isset($_SESSION['cart'][$product_id]['quantity']))
-        {
-            $qty=$_SESSION['cart'][$product_id]['quantity'];
-        }
-        else
-        {
-            $qty=1;
+        if (isset($_SESSION['cart'][$product_id]['quantity'])) {
+            $qty = $_SESSION['cart'][$product_id]['quantity'];
+        } else {
+            $qty = 1;
         }
         // if the product is not into  favorite
         $select_fav = "SELECT * FROM fav WHERE product_id=$product_id AND user_id='$user_id'";
@@ -96,7 +82,7 @@ if (isset($_GET['dec_id']) || isset($_GET['vdec_id'])) {
         $dec_id = $_GET['dec_id'];
     }
     // view more dec
-    elseif (isset($_GET['vdec_id'])){
+    elseif (isset($_GET['vdec_id'])) {
         $dec_id = $_GET['vdec_id'];
     }
     $select_qry = "SELECT * FROM fav WHERE product_id=$dec_id AND user_id='$user_id'";
@@ -139,7 +125,7 @@ if (isset($_GET['inc_id']) || isset($_GET['vinc_id'])) {
     $select_qry = "SELECT * FROM product WHERE product_id=$inc_id";
     $select_result = mysqli_query($con, $select_qry);
     $row_pt = mysqli_fetch_array($select_result);
-     $product_stock = $row_pt['product_stock'];
+    $product_stock = $row_pt['product_stock'];
     $select_qry = "SELECT * FROM fav WHERE product_id=$inc_id AND user_id='$user_id'";
     $reslut_qry = mysqli_query($con, $select_qry);
     $row = mysqli_fetch_array($reslut_qry);
@@ -190,55 +176,58 @@ function fav()
             $product_name = $row_pd['product_name'];
             $product_img = $row_pd['product_img'];
             $product_off = $row_pd['product_off'];
-            $product_stock=$row_pd['product_stock'];
+            $product_stock = $row_pd['product_stock'];
             $fav_qty = $row_fd['qty'];
             $fav_p_price = $row_fd['fav_p_price'];
             $fav_c_price = $row_fd['fav_c_price'];
             // product select query for check product stock
-            if($product_stock>=$fav_qty)
-            {
-                $qty=$fav_qty;
-            }
-            else{
-                $qty=$product_stock;
-                $update_qry="UPDATE fav SET qty=$qty where product_id=$product_id and user_id=$user_id";
-                $update_result=mysqli_query($con,$update_qry);
+            if ($product_stock >= $fav_qty) {
+                $qty = $fav_qty;
+            } else {
+                $qty = $product_stock;
+                $update_qry = "UPDATE fav SET qty=$qty where product_id=$product_id and user_id=$user_id";
+                $update_result = mysqli_query($con, $update_qry);
             }
             ?>
             <div class='col-12 col-sm-6 col-md-4 col-lg-3 p-2'>
-            <div class='card'>
-              <a href='second page.php?view=<?php echo $product_id; ?>'>
-              <img class='card-img-top' src='./admin/product_image/<?php echo $product_img;?>' alt='Card image cap'<?php if($product_stock<=0) {echo 'id="blur"';}?>>
-              </a>
-              <div class='card-body '>
-              <div class='row'>
-              <div class='col-6'>
-                <h5 class='card-title my-0'><?php echo $product_name; ?></h5>
-                <?php 
-                if($qty>0)
-                {
-                ?>
-                <div class='quantity'>
-                     <a href='second page.php?dec_id=<?php echo $fav_id; ?>' class='dec'><i class='fa-solid fa-circle-minus'></i></a>
-                     <span><?php echo $qty; ?></span>
-                     <a href='second page.php?inc_id=<?php echo $fav_id; ?>' class='inc'><i class='fa-solid fa-circle-plus'></i><a>
+                <div class='card'>
+                    <a href='second page.php?view=<?php echo $product_id; ?>'>
+                        <img class='card-img-top' src='./admin/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
+                              echo 'id="blur"';
+                          } ?>>
+                    </a>
+                    <div class='card-body '>
+                        <div class='row'>
+                            <div class='col-6'>
+                                <h5 class='card-title my-0'><?php echo $product_name; ?></h5>
+                                <?php
+                                if ($qty > 0) {
+                                    ?>
+                                    <div class='quantity'>
+                                        <a href='second page.php?dec_id=<?php echo $fav_id; ?>' class='dec'><i
+                                                class='fa-solid fa-circle-minus'></i></a>
+                                        <span><?php echo $qty; ?></span>
+                                        <a href='second page.php?inc_id=<?php echo $fav_id; ?>' class='inc'><i
+                                                class='fa-solid fa-circle-plus'></i><a>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                <p class='card-text' style='color: green;'><?php echo $product_off; ?>% off &nbsp;<del
+                                        style='color: black;'><?php echo $fav_p_price; ?></del>&nbsp;<b
+                                        style='color: black;'>₹<?php echo $fav_c_price; ?></b></p>
+                            </div>
+                            <div class='col-6 text-center'>
+                                <a href='second page.php?favorite && rfav=<?php echo $product_id; ?>'
+                                    class='btn btn-secondary mb-4 mt-4 '>Remove Fav</a>
+                                <!-- <a href='second page.php?view=<?php //echo $product_id; ?>' class='btn btn-info mb-2 me-2'>View</a> -->
+                                <!-- <a href='#' class='btn btn-primary me-2 mb-2 me-2'>Buy</a> -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <?php
-                }
-                ?>
-                <p class='card-text' style='color: green;'><?php echo $product_off;?>% off &nbsp;<del style='color: black;'><?php echo $fav_p_price; ?></del>&nbsp;<b
-                    style='color: black;'>₹<?php echo $fav_c_price; ?></b></p>
-                </div>
-                <div class='col-6 text-center'>
-                  <a href='second page.php?favorite && rfav=<?php echo $product_id; ?>' class='btn btn-secondary mb-4 mt-4 '>Remove Fav</a>
-                  <!-- <a href='second page.php?view=<?php //echo $product_id; ?>' class='btn btn-info mb-2 me-2'>View</a> -->
-                  <!-- <a href='#' class='btn btn-primary me-2 mb-2 me-2'>Buy</a> -->
-                </div>
-              </div>
             </div>
-          </div>
-          </div>
-<?php
+            <?php
         }
 
     } else {
@@ -295,12 +284,17 @@ function price_details()
                 </th>
             </tr>
           </table>";
-     $select_qry="SELECT MIN(qty) AS min_qty from fav WHERE user_id=$user_id";
-     $result_qry=mysqli_query($con,$select_qry);
-     $row=mysqli_fetch_array($result_qry);
-     $min_qty=$row['min_qty'];
-     ?>
-    <a <?php if($min_qty>0){ echo "href='second page.php?fav_order_product'"; }?> class='btn btn-warning me-2 mb-2 me-2'<?php if($min_qty<=0){ echo 'id="disabled"'; } ?>>Place order</a>
+    $select_qry = "SELECT MIN(qty) AS min_qty from fav WHERE user_id=$user_id";
+    $result_qry = mysqli_query($con, $select_qry);
+    $row = mysqli_fetch_array($result_qry);
+    $min_qty = $row['min_qty'];
+    ?>
+    <a <?php if ($min_qty > 0) {
+        echo "href='second page.php?fav_order_product'";
+    } ?> class='btn btn-warning me-2 mb-2 me-2'
+        <?php if ($min_qty <= 0) {
+            echo 'id="disabled"';
+        } ?>>Place order</a>
     <?php
 }
 ?>

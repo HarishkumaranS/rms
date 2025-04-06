@@ -1,42 +1,3 @@
-<style>
-    .status-badge {
-        font-size: 1rem;
-        padding: 5px 10px;
-        margin-bottom: 10px;
-    }
-
-    .product-image {
-        object-fit: contain;
-        width: 400px;
-        /* Make image responsive */
-        height: 400px;
-        /* Maintain aspect ratio */
-    }
-
-    @media screen and (max-width:991px) {
-        .product-image {
-            object-fit: contain;
-            width: 95%;
-
-            height: 250px;
-        }
-    }
-
-    .total-price {
-        font-size: 1.25rem;
-        font-weight: bold;
-    }
-
-    .delivery-info {
-        margin-top: 15px;
-        font-size: 1rem;
-        font-weight: bold;
-    }
-
-    .condent {
-        margin-top: 2rem;
-    }
-</style>
 <?php
 if (isset($_GET['order_summary'])) {
     $order_id = $_GET['order_summary'];
@@ -62,7 +23,9 @@ if (isset($_GET['order_summary'])) {
         ?>
         <!-- Product Image -->
         <div class="col-12 col-md-4 text-center condent">
-        <a href='second page.php?view=<?php echo $product_id; ?>'><img src="./admin/product_image/<?php echo $product_img; ?>" alt="Product Image" class="img-fluid product-image"></a>
+            <a href='second page.php?view=<?php echo $product_id; ?>'><img
+                    src="./admin/product_image/<?php echo $product_img; ?>" alt="Product Image"
+                    class="img-fluid product-image"></a>
         </div>
 
         <!-- Product Details -->
@@ -77,19 +40,22 @@ if (isset($_GET['order_summary'])) {
             <p class="total-price">Total Price: ₹<?php echo $order_price; ?></p>
 
             <p><strong>Order Date:</strong> <?php echo $order_date; ?></p> <!-- Added Order Date -->
-            <!-- <p><strong>Payment Type:</strong> <?php /*echo $payment_type; */?></p> -->
+            <!-- <p><strong>Payment Type:</strong> <?php /*echo $payment_type; */ ?></p> -->
             <!-- Status Badge -->
             <div class="d-flex align-items-center">
                 <?php if ($status == 1) {
-                        echo "<span class='badge  status-badge text-light' style='background-color:green;'>Delivered</span>";
-                    } else {
-                        echo "<span class='badge  status-badge text-light' style='background-color:red;'>Pending</span>";
-                    } ?>
+                    echo "<span class='badge  status-badge text-light' style='background-color:green;'>Delivered</span>";
+                } else {
+                    echo "<span class='badge  status-badge text-light' style='background-color:red;'>Pending</span>";
+                } ?>
             </div>
 
             <!-- Delivery Information -->
             <div class="delivery-info">
-                <p><strong>Delivery Date <?php if ($status == 0) { echo '(Expected)';} ?>:</strong> <?php echo $delivered_date; ?></p>
+                <p><strong>Delivery Date <?php if ($status == 0) {
+                    echo '(Expected)';
+                } ?>:</strong>
+                    <?php echo $delivered_date; ?></p>
             </div>
 
             <!-- Shipping Address

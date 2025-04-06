@@ -1,23 +1,20 @@
-<html>
-
-<body>
 <?php
-  if (isset($_GET['order'])) {
-    // user id 
-    $pay_id = null;
-    if (isset($_SESSION['user_id']/*referance in login_logout.php*/)) {
-      $pay_id = $_SESSION['user_id']/*referance in login_logout.php*/ ;
-    }
-    if (isset($pay_id)) {
-      function my_order()
-      {
-        global $con, $pay_id;
-        // fav table datebase
-        $select_order = "SELECT * FROM user_order WHERE user_id=$pay_id ORDER BY o_id DESC";
-        $result_order = mysqli_query($con, $select_order);
-        $num = mysqli_num_rows($result_order);
-        if ($num == 0) {
-          echo '<div class="svg"><svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="300" height="300"
+if (isset($_GET['order'])) {
+  // user id 
+  $pay_id = null;
+  if (isset($_SESSION['user_id']/*referance in login_logout.php*/)) {
+    $pay_id = $_SESSION['user_id']/*referance in login_logout.php*/ ;
+  }
+  if (isset($pay_id)) {
+    function my_order()
+    {
+      global $con, $pay_id;
+      // fav table datebase
+      $select_order = "SELECT * FROM user_order WHERE user_id=$pay_id ORDER BY o_id DESC";
+      $result_order = mysqli_query($con, $select_order);
+      $num = mysqli_num_rows($result_order);
+      if ($num == 0) {
+        echo '<div class="svg"><svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="300" height="300"
          viewBox="0 0 797.5 834.5" xmlns:xlink="http://www.w3.org/1999/xlink"><title>No order Placed</title><ellipse cx="308.5"
           cy="780" rx="308.5" ry="54.5" fill="#3f3d56"/><circle cx="496" cy="301.5" r="301.5" fill="#3f3d56"/><circle
            cx="496" cy="301.5" r="248.89787" opacity="0.05"/><circle cx="496" cy="301.5" r="203.99362" opacity="0.05"/>
@@ -58,29 +55,27 @@
              fill="#2f2e41"/><circle cx="559" cy="744.5" r="43" fill="#6c63ff"/><circle cx="54" cy="729.5" r="43" fill=
              "#6c63ff"/><circle cx="54" cy="672.5" r="31" fill="#6c63ff"/><circle cx="54" cy="624.5" r="22" fill=
              "#6c63ff"/></svg></div>';
+      }
+      while ($row_order = mysqli_fetch_array($result_order)) {
+        $product_id = $row_order['product_id'];
+        $order_id = $row_order['o_id'];
+        $qty = $row_order['qty'];
+        $delivered_date = $row_order['d_date'];
+        $product_status = $row_order['status'];
+        if ($product_status == 1) {
+          $status = "<spam style='color:green;'>Delivered</spam>";
+        } else {
+          $status = "<spam style='color:red;'>Pending</spam>";
         }
-          while ($row_order = mysqli_fetch_array($result_order)) {
-            $product_id = $row_order['product_id'];
-            $order_id=$row_order['o_id'];
-            $qty = $row_order['qty'];
-            $delivered_date = $row_order['d_date'];
-            $product_status=$row_order['status'];
-            if($product_status==1)
-            {
-              $status="<spam style='color:green;'>Delivered</spam>";
-            }
-            else{
-              $status="<spam style='color:red;'>Pending</spam>";
-            }
-            //    product table database
-            $select_qry = "SELECT * FROM product where product_id=$product_id";
-            $result_select = mysqli_query($con, $select_qry);
-            $row_pd = mysqli_fetch_array($result_select);
-            $product_id = $row_pd['product_id'];
-            $product_name = $row_pd['product_name'];
-            $product_img = $row_pd['product_img'];
-            $product_price = $row_pd['product_c_price'];
-             echo "<div class='col-6 col-sm-4 col-md-3 col-lg-2 p-2'>
+        //    product table database
+        $select_qry = "SELECT * FROM product where product_id=$product_id";
+        $result_select = mysqli_query($con, $select_qry);
+        $row_pd = mysqli_fetch_array($result_select);
+        $product_id = $row_pd['product_id'];
+        $product_name = $row_pd['product_name'];
+        $product_img = $row_pd['product_img'];
+        $product_price = $row_pd['product_c_price'];
+        echo "<div class='col-6 col-sm-4 col-md-3 col-lg-2 p-2'>
             <div class='card p-0'>
               <a href='second page.php?order_summary=$order_id'>
               <img class='card-img-top p-0 m-0' src='./admin/product_image/$product_img' alt='Card image cap'>
@@ -98,16 +93,11 @@
           </div>
           </div>";
 
-          }
-        }
       }
-     else {
-     echo "<script>window.location.href='login_logout.php?login';</script>";
     }
+  } else {
+    echo "<script>window.location.href='login_logout.php?login';</script>";
   }
-  
-  ?>
+}
 
-</body>
-
-</html>
+?>

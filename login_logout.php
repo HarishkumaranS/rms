@@ -1,58 +1,3 @@
-<style>
-    *::-webkit-scrollbar {
-        display: none;
-    }
-
-    .form-container {
-        border: 1px solid #ccc;
-        /* Border around the form */
-        border-radius: 8px;
-        /* Rounded corners */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        /* Box shadow */
-        padding: 20px;
-        border: 2px solid silver;
-        backdrop-filter: blur(5px);
-        /* Blur effect */
-        box-shadow: 5px 5px 15px rgba(192, 192, 192, 0.8),
-            -5px -5px 15px rgba(255, 255, 255, 0.5);
-        /* Padding inside the form */
-        /* Background color of the form */
-    }
-
-    /* .blur
-    {
-        backdrop-filter: blur(30);
-    } */
-    .form-control {
-        border: 1px solid #ccc;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-control:focus {
-        border-color: #66afe9;
-        box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
-    }
-
-    .invalid-feedback {
-        display: none;
-        /* Hide invalid feedback by default */
-    }
-
-    input:invalid+.invalid-feedback,
-    textarea:invalid+.invalid-feedback {
-        display: block;
-        /* Show feedback if the input is invalid */
-    }
-
-    .blur {
-        border: 2px solid silver;
-        backdrop-filter: blur(5px);
-        /* Blur effect */
-        box-shadow: 5px 5px 15px rgba(192, 192, 192, 0.8),
-            -5px -5px 15px rgba(255, 255, 255, 0.5);
-    }
-</style>
 <?php
 // database connection
 include 'Config/db_connection.php';
@@ -102,9 +47,6 @@ if (isset($_GET['create_account'])) {
         } elseif ($num >= 1) {
             $invlide_phone1 = "The Phone is already exists";
         } else {
-            //     echo "<pre>";
-            // print_r($_POST);
-            // echo "</pre>";
             $user_name = $_POST['username'];
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -122,15 +64,7 @@ if (isset($_GET['create_account'])) {
     }
 }
 if (isset($_GET['forgot_pass'])) {
-    // echo "<pre>";
-    // print_r($_POST);
-    // echo "</pre>";
-    // echo "bb";
     if (isset($_POST['submit'])) {
-        // print_r($_POST);
-        //    echo $user_name=$_POST['username'];
-        // echo $_SESSION['captcha_code']."<br>";
-        // echo $_POST['captchaInput']."<br>";
         $email = $_POST['email'];
         $num1 = $_POST['phone1'];
         $num2 = $_POST['phone2'];
@@ -151,11 +85,6 @@ if (isset($_GET['forgot_pass'])) {
 if (isset($_GET['new_password'])) {
     $user_id = $_GET['new_password'];
     if (isset($_POST['newpassword'])) {
-        //     echo "<pre>";
-        //     echo $_GET['new_password'];
-        //    print_r($_POST);
-        //    echo "</pre>";
-
         if ($_POST['newpassword'] != $_POST['confirm_password']) {
             $invlide_confirm_password = "Please enter the same Password";
         } else {
@@ -180,9 +109,13 @@ if (isset($_GET['new_password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <!-- logo in title bar -->
-    <link rel="icon" href="././image/logo.png" type="image/x-icon">
+    <link rel="icon" href="assets/image/logo.png" type="image/x-icon">
     <!-- css link -->
     <link rel="stylesheet" href="food.css">
+    <!-- Include CSS File -->
+    <link rel="stylesheet" href="assets/css/login_logout.css">
+    <!-- Particals CSS File -->
+    <link rel="stylesheet" href="assets/css/particals.css">
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -194,38 +127,9 @@ if (isset($_GET['new_password'])) {
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 </head>
-<style>
-    .title {
-        font-family: Algerian, broadway; 
-        font-size: 40px;
-
-    }
-
-    body {
-        background-image: url('././image/bg.png');
-        width: 100%;
-        background-attachment: fixed;
-        background-attachment: fixed;
-    }
-
-    .navbar {
-        background-color: #2F4F4F;
-        /* 60% opacity */
-        /* backdrop-filter: blur(10px); */
-        /* border: 2px solid silver;   */
-    }
-    #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background: url('../image/bg.png') no-repeat center center/cover;
-        z-index: -1;
-    }
-    
-</style>
 
 <body>
-<div id="particles-js"></div>
+    <div id="particles-js"></div>
     <header class="sticky-top">
         <!-- nav bar -->
         <nav class="navbar navbar-light ">
@@ -233,7 +137,7 @@ if (isset($_GET['new_password'])) {
             <a class="navbar-brand" href="#">
                 <!-- back button -->
                 <i class="fas fa-arrow-left text-light" id="back"></i>
-                <img class="logo" src="././image/logo.png">
+                <img class="logo" src="assets/image/logo.png">
                 <!-- title -->
                 <b class="title text-light">Food World</b>
             </a>
@@ -248,20 +152,16 @@ if (isset($_GET['new_password'])) {
                     <form action="" method="post">
                         <div class="mb-3">
                             <label for="phone" class="form-label text-light">Phone Number</label>
-                            <input type="tel" class="form-control" name="phone" placeholder="Enter your phone number"
-                                value="<?php if (isset($_POST['phone'])) {
-                                    echo htmlspecialchars($_POST['phone']);
-                                } ?>"
-                                required>
+                            <input type="tel" class="form-control" name="phone" placeholder="Enter your phone number" value="<?php if (isset($_POST['phone'])) {
+                                echo htmlspecialchars($_POST['phone']);
+                            } ?>" required>
                         </div>
 
                         <div class="">
                             <label for="password" class="form-label text-light">Password</label>
-                            <input type="password"
-                                class="form-control <?php if (isset($incorrect_pass) && isset($_GET['login'])) {
-                                    echo 'is-invalid text-danger';
-                                } ?>"
-                                name="password" required placeholder="Enter your Password">
+                            <input type="password" class="form-control <?php if (isset($incorrect_pass) && isset($_GET['login'])) {
+                                echo 'is-invalid text-danger';
+                            } ?>" name="password" required placeholder="Enter your Password">
                         </div>
 
                         <div class="form-group mb-3">
@@ -336,15 +236,13 @@ if (isset($_GET['new_password'])) {
                         <label for="phone1" class="text-light">Phone Number 1</label>
                         <input type="tel" class="form-control <?php if (isset($invlide_phone1)) {
                             echo "is-invalid text-danger";
-                        } ?>" name="phone1" placeholder="Enter your phone number" required pattern="[0-9]{10}"
-                            value="<?php if (isset($_POST['phone1'])) {
-                                echo $_POST['phone1'];
-                            } ?>" autocomplete="off">
+                        } ?>" name="phone1" placeholder="Enter your phone number" required pattern="[0-9]{10}" value="<?php if (isset($_POST['phone1'])) {
+                             echo $_POST['phone1'];
+                         } ?>" autocomplete="off">
                         <?php if (isset($invlide_phone1)) {
                             echo "<div class='text-danger'>$invlide_phone1</div>";
                         }
-                        //  if (isset($_POST['submit'])) { echo'<div class="invalid-feedback">Please enter a valid 10-digit phone number.</div>';
-                        // } ?>
+                        ?>
                     </div>
                     <div class="form-group">
                         <label for="phone2" class="text-light">Phone Number 2</label>
@@ -468,28 +366,8 @@ if (isset($_GET['new_password'])) {
                 window.history.back();
             });
         </script>
-        <script>
-particlesJS("particles-js", {
-    particles: {
-        number: { value: 100 },
-        shape: { type: "circle" },
-        color: { value: ["#ff5733", "#f4c542", "#28a745"] }, // Custom colors (orange, yellow, green)
-        opacity: { value: 0.7 },
-        size: { value: 4 },
-        move: { speed: 2 },
-        line_linked: {
-            enable: true,
-            color: "#ffffff", // Line color (white)
-            opacity: 0.2,
-        },
-    },
-    interactivity: {
-        events: {
-            onhover: { enable: true, mode: "repulse" },
-        },
-    },
-});
-</script>
+        <!-- Paricals Js File -->
+        <script src="assets/js/particals.js"></script>
 </body>
 
 </html>
