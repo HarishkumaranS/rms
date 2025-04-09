@@ -103,11 +103,11 @@ if (isset($_GET['dec_id']) || isset($_GET['vdec_id'])) {
     if ($result_dec) {
         // fav path
         if (isset($_GET['dec_id'])) {
-            echo "<script>window.history.back();</script>";
+            echo "<script>window.location.href = document.referrer;</script>";
         }
         // view more path
         elseif (isset($_GET['vdec_id'])) {
-            echo "<script>window.history.back();</script>";
+            echo "<script>window.location.href = document.referrer;</script>";
         }
     }
 }
@@ -192,7 +192,7 @@ function fav()
             <div class='col-12 col-sm-6 col-md-4 col-lg-3 p-2'>
                 <div class='card'>
                     <a href='second page.php?view=<?php echo $product_id; ?>'>
-                        <img class='card-img-top' src='./admin/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
+                        <img class='card-img-top' src='./admin/assets/image/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
                               echo 'id="blur"';
                           } ?>>
                     </a>

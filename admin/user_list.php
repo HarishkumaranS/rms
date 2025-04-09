@@ -4,12 +4,6 @@ function user_list()
     global $con;
     if (isset($_SESSION['admin'])) {
         ?>
-        <style>
-            a {
-                text-decoration: none;
-                color: black;
-            }
-        </style>
         <!-- heading -->
         <h4 align="center"><b>User List</b></h4>
         <form action="" method="post">

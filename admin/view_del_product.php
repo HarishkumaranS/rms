@@ -1,25 +1,18 @@
 <?php
+include '../Config/db_connection.php';
+if (isset($_GET['PUDid'])) {
+    $ud_id = $_GET['PUDid'];
+    // del qry
+    $update_qry = "UPDATE product SET status=1 WHERE product_id='$ud_id'";
+    $result = mysqli_query($con, $update_qry);
+    // php href link
+    echo "<script>window.location.href='index.php?view_product';</script>";
+}
 function view_del_product()
 {
     if (isset($_SESSION['admin'])) {
         global $con;
         ?>
-        <style>
-            img {
-                height: 100px;
-                width: 125px;
-                object-fit: contain;
-            }
-
-            td:nth-child(5),
-            td:nth-child(4),
-            td:nth-child(3) {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 150px;
-            }
-        </style>
         <!-- heading -->
         <h4 align="center"><b>Deleted Product</b></h4>
         <?php
@@ -95,7 +88,7 @@ function view_del_product()
             $result_product = mysqli_query($con, $select_product);
             $num = mysqli_num_rows($result_product);
             if ($num > 0) {
-                echo "<table class='product_table table table-striped table-light'><thead class='thead-dark'><tr><th scope='col'>S.NO</th><th scope='col'>Name</th><th scope='col'>Scale</th><th scope='col'>Keyword</th><th scope='col'>Description</th><th scope='col'>Category</th><th scope='col'>Image</th><th scope='col'>Image2</th><th scope='col'>Image3</th><th scope='col'>Price</th><th scope='col'>Offer</th><th scope='col'>Current Price</th><th scope='col'>Product stocks</th><th scope='col'>Remove</th></tr></thead><tbody>";
+                echo "<table class='product_table table table-striped table-light'><thead class='thead-dark'><tr><th scope='col'>S.NO</th><th scope='col'>Name</th><th scope='col'>Scale</th><th scope='col'>Keyword</th><th scope='col'>Description</th><th scope='col'>Category</th><th scope='col'>Image</th><th scope='col'>Image2</th><th scope='col'>Image3</th><th scope='col'>Price</th><th scope='col'>Offer</th><th scope='col'>Current Price</th><th scope='col'>Remove</th></tr></thead><tbody>";
                 $s_no=0;
                 while ($row = mysqli_fetch_array($result_product)) {
                     $s_no++;
@@ -109,15 +102,13 @@ function view_del_product()
                     $product_price = $row['product_price'];
                     $product_off = $row['product_off'];
                     $product_c_price = $row['product_c_price'];
-                    $product_stock = $row['product_stock'];
                     $product_keyword = $row['product_keyword'];
                     $product_cat = $row['product_cat'];
                     echo "<tr><td scope='row'>$s_no</td><td>$product_name</td><td >$product_scale</td><td  >$product_keyword</td><td class='truncate-text'>$product_des</td><td>$product_cat</td>
-            <td><img src='../admin/product_image/$product_img' alt='$product_name' class='view-product-image'>
-            <td><img src='../admin/product_image/$product_img2' alt='$product_name' class='view-product-image'></td>
-            <td><img src='../admin/product_image/$product_img3' alt='$product_name' class='view-product-image'></td>
+            <td><img src='./assets/image/product_image/$product_img' alt='$product_name' class='view-product-image pro_img'>
+            <td><img src='./assets/image/product_image/$product_img2' alt='$product_name' class='view-product-image pro_img'></td>
+            <td><img src='./assets/image/product_image/$product_img3' alt='$product_name' class='view-product-image pro_img'></td>
             </td><td>$product_price</td><td>$product_off%</td><td> $product_c_price</td>
-            <td> $product_stock</td>
             <td><a class='nav-link' onclick='rdel_product($product_id)'><i class='fa-solid fa-trash-arrow-up del_color'></i></a></td></tr>";
                 }
                 echo "</tbody></table>";
@@ -131,24 +122,4 @@ function view_del_product()
         echo "<script>window.location.href='index.php?login';</script>";
     }
 }
-if (isset($_GET['PUDid'])) {
-    $ud_id = $_GET['PUDid'];
-    // del qry
-    $update_qry = "UPDATE product SET status=1 WHERE product_id='$ud_id'";
-    $result = mysqli_query($con, $update_qry);
-    // php href link
-    // header('Location:index.php?view_product');
-    echo "<script>window.location.href='index.php?view_product';</script>";
-}
 ?>
-<!-- alert box for delete  using js-->
-<script>
-    function rdel_product(product_id) {
-        var title_value = confirm('Do you want to Remove From delete?');
-        if (title_value === true) {
-            // Correctly concatenate the product_id variable
-            window.location.href = 'view_del_product.php?PUDid=' + product_id;
-        }
-    }
-
-</script>

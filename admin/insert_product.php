@@ -1,13 +1,3 @@
-<style>
-  .blur {
-    border: 2px solid silver;
-    backdrop-filter: blur(2px);
-    /* Blur effect */
-    box-shadow: 5px 5px 15px rgba(192, 192, 192, 0.8),
-      -5px -5px 15px rgba(255, 255, 255, 0.5);
-
-  }
-</style>
 <?php
 function insert_product()
 {

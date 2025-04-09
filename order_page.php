@@ -78,7 +78,7 @@ if (isset($_GET['order'])) {
         echo "<div class='col-6 col-sm-4 col-md-3 col-lg-2 p-2'>
             <div class='card p-0'>
               <a href='second page.php?order_summary=$order_id'>
-              <img class='card-img-top p-0 m-0' src='./admin/product_image/$product_img' alt='Card image cap'>
+              <img class='card-img-top p-0 m-0' src='./admin/assets/image/product_image/$product_img' alt='Card image cap'>
               </a>
               <div class='card-body p-0 pl-1 m-0'>
               <div class='row'>

@@ -2,6 +2,8 @@
 session_start();
 // Database
 include '../Config/db_connection.php';
+//include
+include "./assets/include/include.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,7 @@ include '../Config/db_connection.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashbord</title>
     <!-- logo in title bar -->
-    <link rel="icon" href="../image/logo.png" type="image/x-icon">
+    <link rel="icon" href="../assets/image/logo.png" type="image/x-icon">
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -30,523 +32,13 @@ include '../Config/db_connection.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <!-- page loder -->
-    <link rel="stylesheet" href="../page loder/style.css">
+    <link rel="stylesheet" href="../assets/page-loader/style.css">
+    <!-- Include CSS File -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/component.css">
+    <link rel="stylesheet" href="./assets/css/particals.css">
+
 </head>
-<style>
-    *::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* admin table */
-    @media only screen and (min-width< 1280px) {
-        .screen {
-            display: none;
-        }
-    }
-
-    .logo {
-        width: 70px;
-        height: 70px;
-        margin-top: -15px;
-        margin-left: 40px;
-        margin-right: -40px;
-    }
-
-    /* sidebar start */
-    .sidebar {
-        width: 250px;
-        height: 100vh;
-        /* Full height minus 50px at the bottom */
-        background-color: gray;
-        position: fixed;
-        left: -250px;
-        top: 0px;
-        bottom: opx;
-        transition: left 0.3s, z-index 0.3s;
-        z-index: 1;
-        overflow-y: auto;
-        bottom: 0;
-        /* Align to the bottom of the viewport */
-    }
-
-    .sidebar.open {
-        left: 0;
-        z-index: 15;
-    }
-
-    .sidebar ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .sidebar ul li {
-        padding: 15px;
-        border-bottom: 1px solid #444;
-    }
-
-    .sidebar ul li a {
-        color: white;
-        text-decoration: none;
-        display: block;
-        transform: translateX(0);
-        transition: transform 0.5s ease-in-out;
-        /* Smooth transition */
-    }
-
-    .sidebar ul li a:hover {
-        transform: translateX(20px);
-        color: wheat;
-        text-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    .sidebar_icon {
-        margin-right: 10px;
-    }
-
-    .sidebar .close-btn {
-        position: absolute;
-        top: 0;
-        /* Updated from any prior margin or offset */
-        right: 10px;
-        font-size: 20px;
-        cursor: pointer;
-        color: white;
-    }
-
-
-    .main-content {
-        flex: 1;
-        margin-left: 0;
-        padding: 20px;
-        transition: margin-left 0.3s, z-index 0.3s;
-        z-index: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    .main-content.shift {
-        margin-left: 250px;
-        z-index: 0;
-    }
-
-    .toggle-btn {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 20px;
-        cursor: pointer;
-        color: #333;
-        z-index: 10;
-    }
-
-    .toggle-btn span {
-        display: block;
-        width: 30px;
-        height: 3px;
-        background-color: #333;
-        margin: 5px 0;
-    }
-
-    /* sidebar end */
-    /* submit button start */
-    input[type="submit"] {
-        width: 120px;
-        /* Reduced width */
-        height: 45px;
-        /* Reduced height */
-        border: 3px solid #315cfd;
-        border-radius: 30px;
-        /* Adjusted for the new size */
-        transition: all 0.3s;
-        cursor: pointer;
-        background: #58dcda;
-        font-size: 1em;
-        /* Adjusted font size */
-        font-weight: 550;
-    }
-
-    input[type="submit"]:hover {
-        background: #315cfd;
-        color: white;
-        font-size: 1.2em;
-        /* Adjusted hover font size */
-    }
-
-    /* submit button end */
-    .condent2 {
-        display: flex;
-        position: relative;
-        height: 100vh;
-        width: 100vw;
-        color: white;
-        flex-direction: column;
-        background: linear-gradient(to bottom right, rgb(40, 39, 39), rgb(102, 101, 101));
-        align-items: center;
-        justify-content: center;
-    }
-
-    body {
-        background-image: url('../image/bg.png');
-        width: 100%;
-        background-attachment: fixed;
-        height: auto;
-        font-family: Calibri, serif;
-    }
-
-    /* admin page table */
-    .th {
-        background-color: black;
-        color: wheat;
-    }
-
-    .del_color {
-        cursor: pointer;
-        color: #6c757d;
-    }
-
-    .edit_color {
-        color: #6c757d;
-    }
-
-    .edit_color:hover {
-        transform: scale(1.3);
-        color: #2196f3;
-    }
-
-    .del_color:hover {
-        color: #ff0000;
-        transform: scale(1.3);
-    }
-
-    /* svg image for responcive computer svg image */
-    svg {
-        position: relative;
-        z-index: 2;
-    }
-
-    .svg {
-        display: flex;
-        justify-content: center;
-    }
-
-    #particles {
-        width: 100%;
-        /* Full width of the container */
-        height: 100%;
-        /* Full height of the container */
-        position: absolute;
-        /* Fill the container */
-        top: 0;
-        left: 0;
-        z-index: 1;
-        /* Behind other content */
-    }
-
-    h3 {
-        position: relative;
-        /* Keep the heading above the canvas */
-        z-index: 2;
-        /* Ensure it's above the canvas */
-        margin-top: 20px;
-        /* Add some spacing */
-    }
-
-    .title {
-        font-family: Algerian, broadway;
-        color: black;
-    }
-
-    .btn:hover {
-        transform: scale(1.05);
-    }
-
-    .btn:active {
-        transform: scale(1.05);
-    }
-
-    .heading {
-        padding-left: 2.5rem;
-    }
-
-    .fa-solid {
-        margin-top: 1rem;
-    }
-
-    /* add tutton */
-    /* From Uiverse.io by barisdogansutcu */
-    .add_btn {
-        padding: 10px 20px;
-        /* reduced height and width via padding */
-        border-radius: 50px;
-        cursor: pointer;
-        border: 0;
-        margin-bottom: 5px;
-        background-color: white;
-        color: black;
-        box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        font-size: 15px;
-        transition: all 0.5s ease;
-    }
-
-    .add_btn:hover {
-        letter-spacing: 3px;
-        background-color: hsl(261deg 80% 48%);
-        color: hsl(0, 0%, 100%);
-        box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
-    }
-
-    .add_btn:active {
-        letter-spacing: 3px;
-        background-color: hsl(261deg 80% 48%);
-        color: hsl(0, 0%, 100%);
-        box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
-        transform: translateY(10px);
-        transition: 100ms;
-    }
-
-    /* delete button */
-    .delete_btn {
-        padding: 10px 20px;
-        /* Adjusted size */
-        border-radius: 50px;
-        cursor: pointer;
-        border: 0;
-        background-color: white;
-        color: black;
-        box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        font-size: 15px;
-        transition: all 0.5s ease;
-    }
-
-    .delete_btn:hover {
-        letter-spacing: 3px;
-        background-color: hsl(0, 80%, 48%);
-        /* Red hue on hover */
-        color: hsl(0, 0%, 100%);
-        box-shadow: rgb(255 77 77) 0px 7px 29px 0px;
-    }
-
-    .delete_btn:active {
-        letter-spacing: 3px;
-        background-color: hsl(0, 80%, 48%);
-        color: hsl(0, 0%, 100%);
-        box-shadow: rgb(255 77 77) 0px 0px 0px 0px;
-        transform: translateY(10px);
-        transition: 100ms;
-    }
-
-    /* navbar sub heading product and 2 button */
-    .navbar_heading {
-        position: relative;
-        padding: 10px 10px;
-        margin: 5px;
-    }
-
-    /* Next Button start */
-    .next_btn {
-        font-family: "Lexend Deca", sans-serif;
-        border: none;
-        background-image: linear-gradient(to right, #007bff, #00d4ff, #00b894);
-        border: 2px solid gray;
-        color: #ffffff;
-        font-size: 17px;
-        text-transform: capitalize;
-        letter-spacing: 1px;
-        padding: 13px 26px;
-        cursor: pointer;
-        transform: skew(15deg);
-        transition: all 0.5s;
-        margin-top: -8px;
-    }
-
-    .main-text {
-        display: inline-block;
-        transform: skew(-15deg);
-    }
-
-    .next_btn:hover {
-        transform: translateY(-3px);
-        background-image: linear-gradient(to right, #007bff, #00d4ff, #00b894);
-        border-radius: 26px;
-        animation: pulsate 1s infinite;
-    }
-
-    .next_btn:hover span {
-        display: inline-block;
-        transform: translateX(2px);
-        transition: all 0.5s;
-    }
-
-    .next_btn:focus {
-        outline: none;
-        border-radius: 26px;
-        animation: pulsate 1s infinite;
-    }
-
-    @keyframes pulsate {
-        0% {
-            transform: scale(1);
-            box-shadow: none;
-        }
-
-        50% {
-            transform: scale(1.03);
-            box-shadow: 0 16px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        100% {
-            transform: scale(1);
-            box-shadow: none;
-        }
-    }
-
-    /* next Button End */
-    #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
-
-    .status {
-        cursor: pointer;
-        color: #6c757d;
-    }
-
-    .status:hover {
-        transform: scale(1.3);
-        color: #2196f3;
-    }
-    /* online and direct check box in monthly and daily sales start */
-    .checkbox-wrapper-10 .tgl {
-        display: none;
-    }
-
-    .checkbox-wrapper-10 .tgl,
-    .checkbox-wrapper-10 .tgl:after,
-    .checkbox-wrapper-10 .tgl:before,
-    .checkbox-wrapper-10 .tgl *,
-    .checkbox-wrapper-10 .tgl *:after,
-    .checkbox-wrapper-10 .tgl *:before,
-    .checkbox-wrapper-10 .tgl+.tgl-btn {
-        box-sizing: border-box;
-    }
-
-    .checkbox-wrapper-10 .tgl::-moz-selection,
-    .checkbox-wrapper-10 .tgl:after::-moz-selection,
-    .checkbox-wrapper-10 .tgl:before::-moz-selection,
-    .checkbox-wrapper-10 .tgl *::-moz-selection,
-    .checkbox-wrapper-10 .tgl *:after::-moz-selection,
-    .checkbox-wrapper-10 .tgl *:before::-moz-selection,
-    .checkbox-wrapper-10 .tgl+.tgl-btn::-moz-selection,
-    .checkbox-wrapper-10 .tgl::selection,
-    .checkbox-wrapper-10 .tgl:after::selection,
-    .checkbox-wrapper-10 .tgl:before::selection,
-    .checkbox-wrapper-10 .tgl *::selection,
-    .checkbox-wrapper-10 .tgl *:after::selection,
-    .checkbox-wrapper-10 .tgl *:before::selection,
-    .checkbox-wrapper-10 .tgl+.tgl-btn::selection {
-        background: none;
-    }
-
-    .checkbox-wrapper-10 .tgl+.tgl-btn {
-        outline: 0;
-        display: block;
-        width: 4em;
-        height: 2em;
-        position: relative;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    .checkbox-wrapper-10 .tgl+.tgl-btn:after,
-    .checkbox-wrapper-10 .tgl+.tgl-btn:before {
-        position: relative;
-        display: block;
-        content: "";
-        width: 50%;
-        height: 100%;
-    }
-
-    .checkbox-wrapper-10 .tgl+.tgl-btn:after {
-        left: 0;
-    }
-
-    .checkbox-wrapper-10 .tgl+.tgl-btn:before {
-        display: none;
-    }
-
-    .checkbox-wrapper-10 .tgl:checked+.tgl-btn:after {
-        left: 50%;
-    }
-
-    .checkbox-wrapper-10 .tgl-flip+.tgl-btn {
-        padding: 2px;
-        transition: all 0.2s ease;
-        font-family: sans-serif;
-        perspective: 100px;
-    }
-
-    .checkbox-wrapper-10 .tgl-flip+.tgl-btn:after,
-    .checkbox-wrapper-10 .tgl-flip+.tgl-btn:before {
-        display: inline-block;
-        transition: all 0.4s ease;
-        width: 100%;
-        text-align: center;
-        position: absolute;
-        line-height: 2em;
-        font-weight: bold;
-        color: #fff;
-        position: absolute;
-        top: 0;
-        left: 0;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        border-radius: 4px;
-    }
-
-    .checkbox-wrapper-10 .tgl-flip+.tgl-btn:after {
-        content: attr(data-tg-on);
-        background: #02C66F;
-        transform: rotateY(-180deg);
-    }
-
-    .checkbox-wrapper-10 .tgl-flip+.tgl-btn:before {
-        background: #FF3A19;
-        content: attr(data-tg-off);
-    }
-
-    .checkbox-wrapper-10 .tgl-flip+.tgl-btn:active:before {
-        transform: rotateY(-20deg);
-    }
-
-    .checkbox-wrapper-10 .tgl-flip:checked+.tgl-btn:before {
-        transform: rotateY(180deg);
-    }
-
-    .checkbox-wrapper-10 .tgl-flip:checked+.tgl-btn:after {
-        transform: rotateY(0);
-        left: 0;
-        background: #7FC6A6;
-    }
-
-    .checkbox-wrapper-10 .tgl-flip:checked+.tgl-btn:active:after {
-        transform: rotateY(20deg);
-    }
-    /* online and direct check box in monthly and daily sales end */
-</style>
-
 <body>
     <!-- Page Loader start  -->
     <div class="loader-container" id="loader">
@@ -563,9 +55,6 @@ include '../Config/db_connection.php';
     <!-- Page Loader end  -->
     <div id="particles-js"></div>
     <div class="d-none d-lg-block">
-        <?php
-        include "./include/include.php";
-        ?>
         <!-- header -->
         <header>
             <!-- title and logo -->
@@ -574,7 +63,7 @@ include '../Config/db_connection.php';
                 <div class="d-flex align-items-center justify-content-between p-2" style="background-color: #2F4F4F;">
                     <!-- Left Side: Logo and Title -->
                     <div class="d-flex align-items-center">
-                        <img class="logo" src="../image/logo.png" alt="Logo">
+                        <img class="logo" src="../assets/image/logo.png" alt="Logo">
                         <b class="ms-2 text-light display-6 heading title">Admin Dashboard</b>
                     </div>
 
@@ -601,24 +90,24 @@ include '../Config/db_connection.php';
                             ?>
                         </button>
                         <?php if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) { ?>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?edit_profile"><i
-                                        class="fa-solid fa-user sidebar_icon"></i>Profile</a></li>
-                            <li>
-                                <a style="cursor: pointer;" class="dropdown-item" <?php if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
-                                    echo 'id="logout"';
-                                } else {
-                                    echo 'href="index.php?login"';
-                                } ?>>
-            <?php if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
-                echo "<i class='fa-solid fa-sign-out-alt sidebar_icon'></i> Logout";
-            } else {
-                echo "<i class='fa-solid fa-sign-in-alt sidebar_icon'></i> Login";
-            } ?>
-                                </a>
-                            </li>
-                        </ul>
-                        <?php }?>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?edit_profile"><i
+                                            class="fa-solid fa-user sidebar_icon"></i>Profile</a></li>
+                                <li>
+                                    <a style="cursor: pointer;" class="dropdown-item" <?php if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
+                                        echo 'id="logout"';
+                                    } else {
+                                        echo 'href="index.php?login"';
+                                    } ?>>
+                <?php if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
+                    echo "<i class='fa-solid fa-sign-out-alt sidebar_icon'></i> Logout";
+                } else {
+                    echo "<i class='fa-solid fa-sign-in-alt sidebar_icon'></i> Login";
+                } ?>
+                                    </a>
+                                </li>
+                            </ul>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -670,7 +159,8 @@ include '../Config/db_connection.php';
                                 </ul>
                             </li>
                             <li>
-                                <a class="submenu-toggle" data-bs-toggle="collapse" href="#reportMenu"><i class="fa-solid fa-file-alt sidebar_icon"></i> Generate Report</a>
+                                <a class="submenu-toggle" data-bs-toggle="collapse" href="#reportMenu"><i
+                                        class="fa-solid fa-file-alt sidebar_icon"></i> Generate Report</a>
                                 <ul class="collapse list-unstyled ps-3" id="reportMenu">
                                     <li><a href="index.php?daily_sales">Daily Sales</a></li>
                                     <li><a href="index.php?monthly_sales">Monthly Sales</a></li>
@@ -709,12 +199,11 @@ include '../Config/db_connection.php';
                 delivered_order();
             } elseif (isset($_GET['report']) || isset($_GET['pdf'])) {
                 report();
-            } 
-            elseif(isset($_GET['monthly_sales'])){
+            } elseif (isset($_GET['monthly_sales'])) {
                 monthly_sales();
-            }elseif(isset($_GET['daily_sales'])){
+            } elseif (isset($_GET['daily_sales'])) {
                 daily_sales();
-            }elseif (isset($_GET['login']) || isset($_GET['logout'])) {
+            } elseif (isset($_GET['login']) || isset($_GET['logout'])) {
                 login();
             } elseif (isset($_GET['bill'])) {
                 bill();
@@ -827,64 +316,18 @@ include '../Config/db_connection.php';
         <h3 class="p-0 m-0">Please Open in Desktop</h3>
 
     </div>
-    <script src="./particals/particles.js"></script>
-    <script>
-        // logout yes or no button 
-        document.addEventListener('DOMContentLoaded', function () {
-            var logout = document.getElementById('logout');
-            logout.addEventListener('click', function () {
-                var button = confirm("Do you want to logout.....!");
-                if (button) {
-                    window.location.href = "index.php?logout";
-                }
-            });
-        });
-        // Sidebar Script
-        const toggleBtn = document.getElementById('toggleBtn');
-        const closeBtn = document.getElementById('closeBtn');
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('mainContent');
-
-        toggleBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('open');
-            if (sidebar.classList.contains('open')) {
-                mainContent.style.zIndex = "0";
-            } else {
-                mainContent.style.zIndex = "1";
-            }
-        });
-
-        closeBtn.addEventListener('click', () => {
-            sidebar.classList.remove('open');
-            mainContent.style.zIndex = "1";
-        });
-    </script>
-    <script src="table_pagination.js"></script>
-    <script>
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 100 },
-                shape: { type: "circle" },
-                color: { value: ["#ff5733", "#f4c542", "#28a745"] }, // Custom colors (orange, yellow, green)
-                opacity: { value: 0.7 },
-                size: { value: 4 },
-                move: { speed: 2 },
-                line_linked: {
-                    enable: true,
-                    color: "#ffffff", // Line color (white)
-                    opacity: 0.2,
-                },
-            },
-            interactivity: {
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                },
-            },
-        });
-    </script>
+    <!-- table pagination -->
+    <script src="assets/js/table_pagination.js"></script>
+    <!-- Js script -->
+    <script src="assets/js/script.js"></script>
+    <!-- particles  -->
+    <script src="assets/js/particles.js"></script>
     <!-- page loder -->
-    <script src="../page loder/script.js" defer></script>
-
+    <script src="../assets/page-loader/script.js"></script>
+    <!-- Functions Script -->
+    <script src="./assets/js/functions.js"></script>
+    <!-- Bill Script -->
+    <script src="./assets/js/bill.js"></script>
 </body>
 
 </html>

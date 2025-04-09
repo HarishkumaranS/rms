@@ -4,12 +4,6 @@ function view_del_category()
     if (isset($_SESSION['admin'])) {
         global $con;
         ?>
-        <style>
-            a {
-                text-decoration: none;
-                color: black;
-            }
-        </style>
         <!-- heading -->
         <h4 align="center"><b>Deleted Categories</b></h4>
         <?php
@@ -43,13 +37,3 @@ if (isset($_GET['CUDid'])) {
     echo "<script>window.location.href='index.php?view_cat';</script>";
 }
 ?>
-<!-- alert box for delete using js -->
-<script>
-    function rdel_cat(cat_id) {
-        var title_value = confirm('Do you want to Remove from Delete');
-        if (title_value == true) {
-            // js href link
-            window.location.href = 'index.php?CUDid=' + cat_id;
-        }
-    }
-</script>

@@ -4,12 +4,6 @@ function view_del_event(): void
     if (isset($_SESSION['admin'])) {
         global $con;
         ?>
-        <style>
-            a {
-                text-decoration: none;
-                color: black;
-            }
-        </style>
         <!-- heading -->
         <h4 align="center"><b>View Deleted Event</b></h4>
         <?php
@@ -44,13 +38,3 @@ if (isset($_GET['EUDid'])) {
     echo "<script>window.location.href='index.php?view_event';</script>";
 }
 ?>
-<!-- alert box for delete using js -->
-<script>
-    function rdel_event(e_id) {
-        var title_value = confirm('Do you want to Remove from Delete');
-        if (title_value == true) {
-            // js href link
-            window.location.href = 'index.php?EUDid=' + e_id;;
-        }
-    }
-</script>

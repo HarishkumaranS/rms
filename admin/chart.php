@@ -1,9 +1,3 @@
-<style>
-    #salesChart {
-        background-color: white;
-        margin-bottom: 3rem;
-    }
-</style>
 <?php
 function chart()
 {

@@ -201,12 +201,8 @@ function heading()
         view_fooder();
     }
     ?>
-    <script>
-        let back = document.getElementById('back');
-        back.addEventListener('click', function () {
-            window.history.back();
-        });
-    </script>
+    <!-- Include Js File -->
+    <script src="assets/js/script.js"></script>
     <!-- page loder js -->
     <script src="assets/page-loader/script.js"></script>
 </body>

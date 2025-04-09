@@ -24,7 +24,7 @@ if (isset($_GET['order_summary'])) {
         <!-- Product Image -->
         <div class="col-12 col-md-4 text-center condent">
             <a href='second page.php?view=<?php echo $product_id; ?>'><img
-                    src="./admin/product_image/<?php echo $product_img; ?>" alt="Product Image"
+                    src="./admin/assets/image/product_image/<?php echo $product_img; ?>" alt="Product Image"
                     class="img-fluid product-image"></a>
         </div>
 
@@ -40,7 +40,6 @@ if (isset($_GET['order_summary'])) {
             <p class="total-price">Total Price: ₹<?php echo $order_price; ?></p>
 
             <p><strong>Order Date:</strong> <?php echo $order_date; ?></p> <!-- Added Order Date -->
-            <!-- <p><strong>Payment Type:</strong> <?php /*echo $payment_type; */ ?></p> -->
             <!-- Status Badge -->
             <div class="d-flex align-items-center">
                 <?php if ($status == 1) {

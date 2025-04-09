@@ -113,7 +113,7 @@ if (isset($_GET['new_password'])) {
     <!-- css link -->
     <link rel="stylesheet" href="food.css">
     <!-- Include CSS File -->
-    <link rel="stylesheet" href="assets/css/login_logout.css">
+    <link rel="stylesheet" href="./assets/css/login_logout.css">
     <!-- Particals CSS File -->
     <link rel="stylesheet" href="assets/css/particals.css">
     <!-- font-awesome -->
@@ -125,7 +125,6 @@ if (isset($_GET['new_password'])) {
     <!-- font-awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
 </head>
 
 <body>
@@ -137,7 +136,7 @@ if (isset($_GET['new_password'])) {
             <a class="navbar-brand" href="#">
                 <!-- back button -->
                 <i class="fas fa-arrow-left text-light" id="back"></i>
-                <img class="logo" src="assets/image/logo.png">
+                <img  src="assets/image/logo.png" width="70" height="70" style="margin-top:-8px;">
                 <!-- title -->
                 <b class="title text-light">Food World</b>
             </a>
@@ -359,13 +358,8 @@ if (isset($_GET['new_password'])) {
                 </div>
             </div>
         <?php } ?>
-
-        <script>
-            let back = document.getElementById('back');
-            back.addEventListener('click', function () {
-                window.history.back();
-            });
-        </script>
+        <!-- Include Js File -->
+        <script src="assets/js/script.js"></script>
         <!-- Paricals Js File -->
         <script src="assets/js/particals.js"></script>
 </body>

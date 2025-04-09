@@ -24,7 +24,7 @@ function cat()
     <div class='col-6 col-sm-4 col-md-3 col-lg-2 p-2'>
       <div class='card'>
         <a href='second page.php?view=<?php echo $product_id; ?>'><img class='card-img-top'
-            src='./admin/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
+            src='./admin/assets/image/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
                  echo "id='blur'";
                } ?>></a>
         <div class='card-body'>
@@ -64,7 +64,7 @@ function releated_product()
     <div class='col-6 col-sm-4 col-md-3 col-lg-2 p-2'>
       <div class='card'>
         <a href='second page.php?view=<?php echo $product_id; ?>'><img class='card-img-top'
-            src='./admin/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
+            src='./admin/assets/image/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
                  echo "id='blur'";
                } ?>></a>
         <div class='card-body'>
@@ -104,7 +104,7 @@ function user_serch()
     <div class='col-6 col-sm-4 col-md-3 col-lg-2 p-2'>
       <div class='card'>
         <a href='second page.php?view=<?php echo $product_id; ?>'><img class='card-img-top'
-            src='./admin/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
+            src='./admin/assets/image/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
                  echo "id='blur'";
                } ?>></a>
         <div class='card-body'>
@@ -140,7 +140,7 @@ function all_product()
     <div class='col-6 col-sm-4 col-md-3 col-lg-2 p-2'>
       <div class='card'>
         <a href='second page.php?view=<?php echo $product_id; ?>'><img class='card-img-top'
-            src='./admin/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
+            src='./admin/assets/image/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
                  echo "id='blur'";
                } ?>></a>
         <div class='card-body'>

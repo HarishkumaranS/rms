@@ -4,14 +4,8 @@ function admin_list()
     global $con;
     if (isset($_SESSION['admin'])) {
         ?>
-        <style>
-            a {
-                text-decoration: none;
-                color: black;
-            }
-        </style>
         <!-- heading -->
-        <h4 align="center"><b>User List</b></h4>
+        <h4 align="center"><b>Login List</b></h4>
         <?php
         $select_qry="SELECT *, 
     CASE 
@@ -76,12 +70,3 @@ if($result_qry)
 }
 }
 ?>
-<script>
-    function change(a_id) {
-        var title_value = confirm('Do you want to Chage Status');
-        if (title_value == true) {
-            // js href link
-            window.location.href = 'index.php?ADid=' + a_id;
-        }
-    }
-</script>

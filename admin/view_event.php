@@ -4,12 +4,6 @@ function view_event(): void
     if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
         global $con;
         ?>
-        <style>
-            a {
-                text-decoration: none;
-                color: black;
-            }
-        </style>
         <!-- heading -->
         <div class="navbar_heading">
             <h4 style="margin: 0; text-align: center;"><b>View Event</b></h4>
@@ -40,7 +34,7 @@ function view_event(): void
             }
             ?>
             <div class="container mt-4">
-                <table id="orderTable" class="p_table table table-striped table-light"
+                <table id="orderTable" class=" table table-striped table-light"
                     data-products='<?php echo json_encode($data, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP); ?>'>
 
                     <thead class="bg-light">
@@ -77,13 +71,3 @@ function view_event(): void
     }
 }
 ?>
-<!-- alert box for delete using js -->
-<script>
-    function del_event(e_id) {
-        var title_value = confirm('Do you want to Delete');
-        if (title_value == true) {
-            // js href link
-            window.location.href = 'index.php?EDid=' + e_id;
-        }
-    }
-</script>

@@ -2,15 +2,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-<style>
-    .pdf_icon {
-        color: red;
-    }
-
-    #graph {
-        display: none;
-    }
-</style>
 <?php
 function report()
 {
@@ -337,25 +328,5 @@ function report()
 }
 ?>
 <script>
-    function submit() {
-        // Get form values
-        var select = document.querySelector('select[name="select"]').value;
-        var value = document.querySelector('input[name="value"]').value;
-        var fDate = document.querySelector('input[name="f_date"]').value;
-        var tDate = document.querySelector('input[name="t_date"]').value;
-        alert("l");
-        // Check if select, value, and dates are filled but no valid value is provided
-        if (select && value === '' && fDate === '' && tDate === '') {
-            alert("Please provide either the username, product name, or date.");
-
-        }
-    }
-</script>
-<script>
-    document.addEventListener("keydown", function (event) {
-        if (event.ctrlKey && event.key === "g") {
-            event.preventDefault(); // Prevents any default browser behavior
-            document.getElementById("graph").click(); // Triggers the submit button
-        }
-    });
+    
 </script>

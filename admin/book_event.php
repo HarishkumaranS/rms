@@ -1,12 +1,3 @@
-<style>
-    .blur {
-        border: 2px solid silver;
-        backdrop-filter: blur(2px);
-        /* Blur effect */
-        box-shadow: 5px 5px 15px rgba(192, 192, 192, 0.8),
-            -5px -5px 15px rgba(255, 255, 255, 0.5);
-    }
-</style>
 <?php
 function book_event()
 {
@@ -111,28 +102,3 @@ function book_event()
     }
 }
 ?>
-<script>
-    // Function to display event cost dynamically
-    function fetchEventCost() {
-        const eventSelect = document.getElementById('event');
-        const selectedOption = eventSelect.options[eventSelect.selectedIndex];
-        const eventCost = selectedOption.getAttribute('data-cost');
-        const outputDiv = document.getElementById('output');
-        const eventCostSpan = document.getElementById('eventCost');
-
-        if (eventCost) {
-            eventCostSpan.textContent = `Rs ${eventCost}`;
-            outputDiv.classList.remove('d-none');
-        } else {
-            outputDiv.classList.add('d-none');
-        }
-    }
-//  search box for Event
-$(document).ready(function () {
-
-$("#event").select2({
-    placeholder: "Search for a Event",
-    allowClear: true
-});
-});
-</script>

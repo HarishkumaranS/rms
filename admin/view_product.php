@@ -51,38 +51,8 @@ function view_product()
         global $con;
         ?>
         <style>
-            img {
-                height: 100px;
-                width: 125px;
-                object-fit: contain;
-            }
-
-            td:nth-child(5),
-            td:nth-child(4),
-            td:nth-child(3) {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 150px;
-            }
-
-            .p_table {
-                margin-left: -93px;
-
-            }
-
-            .navbar {
-                display: flex;
-            }
-
-            .stock_color {
-                color: gray;
-            }
-
-            .stock_color:hover {
-                transform: scale(1.3);
-                color: greenyellow;
-            }
+            
+            
         </style>
         <!-- heading -->
         <div class="navbar_heading">
@@ -192,9 +162,9 @@ function view_product()
                         htmlspecialchars($product_keyword),
                         htmlspecialchars($product_des),
                         htmlspecialchars($product_cat),
-                        "<img src='../admin/product_image/$product_img' alt='$product_name' class='view-product-image'>",
-                        "<img src='../admin/product_image/$product_img2' alt='$product_name' class='view-product-image'>",
-                        "<img src='../admin/product_image/$product_img3' alt='$product_name' class='view-product-image'>",
+                        "<img src='./assets/image/product_image/$product_img' alt='$product_name' class='view-product-image pro_img'>",
+                        "<img src='./assets/image/product_image/$product_img2' alt='$product_name' class='view-product-image pro_img'>",
+                        "<img src='./assets/image/product_image/$product_img3' alt='$product_name' class='view-product-image pro_img'>",
                         htmlspecialchars($product_price),
                         htmlspecialchars($product_off . '%'),
                         htmlspecialchars($product_c_price),
@@ -260,20 +230,3 @@ function view_product()
 <?php
 }
 ?>
-<!-- alert box for delete  using js-->
-<script>
-    function del_product(product_id) {
-        var title_value = confirm('Do you want to delete?');
-        if (title_value === true) {
-            window.location.href = 'index.php?PDid=' + product_id;
-        }
-    }
-
-</script>
-
-<script>
-    // stock update function
-    function stock(a) {
-        window.location.href = "index.php?view_product&stock_id=" + a;
-    }
-</script>

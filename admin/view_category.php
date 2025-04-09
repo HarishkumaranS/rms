@@ -4,12 +4,6 @@ function view_category()
     if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
         global $con;
         ?>
-        <style>
-            a {
-                text-decoration: none;
-                color: black;
-            }
-        </style>
         <!-- heading -->
         <div class="navbar_heading">
             <h4 style="margin: 0; text-align: center;"><b>View Categories</b></h4>
@@ -39,7 +33,7 @@ function view_category()
             // print_r($data);
             ?>
             <div class="container mt-4">
-    <table id="orderTable" class="p_table table table-striped table-light"
+    <table id="orderTable" class=" table table-striped table-light"
         data-products='<?php echo json_encode($data, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE); ?>'>
                     <thead class="bg-light">
                         <tr>
@@ -73,13 +67,3 @@ function view_category()
     }
 }
 ?>
-<!-- alert box for delete using js -->
-<script>
-    function del_cat(cat_id) {
-        var title_value = confirm('Do you want to Delete');
-        if (title_value == true) {
-            // js href link
-            window.location.href = 'index.php?CDid=' + cat_id;
-        }
-    }
-</script>

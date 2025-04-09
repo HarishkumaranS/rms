@@ -1,0 +1,219 @@
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* admin table */
+@media only screen and (min-width< 1280px) {
+    .screen {
+        display: none;
+    }
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    margin-top: -15px;
+    margin-left: 40px;
+    margin-right: -40px;
+}
+
+.blur {
+    border: 2px solid silver;
+    backdrop-filter: blur(2px);
+    box-shadow: 5px 5px 15px rgba(192, 192, 192, 0.8),
+      -5px -5px 15px rgba(255, 255, 255, 0.5);
+  }
+
+/* sidebar start */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: gray;
+    position: fixed;
+    left: -250px;
+    top: 0px;
+    bottom: opx;
+    transition: left 0.3s, z-index 0.3s;
+    z-index: 1;
+    overflow-y: auto;
+    bottom: 0;
+}
+
+.sidebar.open {
+    left: 0;
+    z-index: 15;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    border-bottom: 1px solid #444;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transform: translateX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.sidebar ul li a:hover {
+    transform: translateX(20px);
+    color: wheat;
+    text-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar_icon {
+    margin-right: 10px;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+}
+
+
+.main-content {
+    flex: 1;
+    margin-left: 0;
+    padding: 20px;
+    transition: margin-left 0.3s, z-index 0.3s;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-content.shift {
+    margin-left: 250px;
+    z-index: 0;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+    z-index: 10;
+}
+
+.toggle-btn span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+}
+
+/* sidebar end */
+
+.condent2 {
+    display: flex;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    color: white;
+    flex-direction: column;
+    background: linear-gradient(to bottom right, rgb(40, 39, 39), rgb(102, 101, 101));
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background-image: url('../../../assets/image/bg.png');
+    width: 100%;
+    background-attachment: fixed;
+    height: auto;
+    font-family: Calibri, serif;
+}
+
+/* admin page table */
+.th {
+    background-color: black;
+    color: wheat;
+}
+
+
+/* svg image for responcive computer svg image */
+svg {
+    position: relative;
+    z-index: 2;
+}
+
+.svg {
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+}
+
+.title {
+    font-family: Algerian, broadway;
+    color: black;
+}
+
+.heading {
+    padding-left: 2.5rem;
+}
+
+.fa-solid {
+    margin-top: 1rem;
+}
+
+/* navbar sub heading product and 2 button */
+.navbar_heading {
+    position: relative;
+    padding: 10px 10px;
+    margin: 5px;
+}
+
+/* Chart */
+#salesChart {
+    background-color: white;
+    margin-bottom: 3rem;
+}
+
+#graph {
+    display: none;
+}
+
+/* product Table start */
+.pro_img {
+    height: 100px;
+    width: 125px;
+    object-fit: contain;
+}
+
+td:nth-child(5),
+td:nth-child(4),
+td:nth-child(3) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.p_table {
+    margin-left: -93px;
+
+}
+
+/* product Table End */

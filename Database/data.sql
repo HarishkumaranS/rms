@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2025 at 08:58 AM
+-- Generation Time: Apr 06, 2025 at 02:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -21,22 +21,6 @@ SET time_zone = "+00:00";
 -- Database: `rms`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `a_id` int(2) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `user_name` varchar(30) NOT NULL,
-  `ph_no` bigint(10) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `login` varchar(10) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `admin`
 --
@@ -46,18 +30,8 @@ INSERT INTO `admin` (`a_id`, `name`, `user_name`, `ph_no`, `password`, `login`, 
 (2, 'Thaiyanban', 'Thaiyanban', 6380476613, 'Thaiyanban@2005', 'admin', 1),
 (3, 'Tharun PB', 'Tharun', 7339286428, 'Tharun@2005', 'biller', 1),
 (4, 'Senthil', 'Senthil', 9865139150, 'Senthil@29', 'admin', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories`
---
-
-CREATE TABLE `categories` (
-  `cat_id` int(3) NOT NULL,
-  `cat_title` varchar(20) DEFAULT NULL,
-  `status` int(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(5, 'Admin', 'Senthil', 9632587410, 'Admin@123', 'admin', 1);
+(6, 'Biller', 'Biller', 9874563210, 'Biller@123', 'biller', 1),
 
 --
 -- Dumping data for table `categories`
@@ -69,18 +43,6 @@ INSERT INTO `categories` (`cat_id`, `cat_title`, `status`) VALUES
 (3, 'Dessert', 1),
 (4, 'Starter', 1),
 (5, 'Fresh Juice', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `cust_id` int(11) NOT NULL,
-  `cust_name` varchar(255) DEFAULT NULL,
-  `cust_num` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customer`
@@ -114,19 +76,6 @@ INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_num`) VALUES
 (25, 'Priya Saxena', '9900887766'),
 (26, 'harishkumaran s', '8838263645');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `event`
---
-
-CREATE TABLE `event` (
-  `e_id` int(3) NOT NULL,
-  `e_name` varchar(20) DEFAULT NULL,
-  `e_cost` int(6) DEFAULT NULL,
-  `status` int(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `event`
 --
@@ -142,21 +91,6 @@ INSERT INTO `event` (`e_id`, `e_name`, `e_cost`, `status`) VALUES
 (8, 'Retirement Party', 22000, 1),
 (9, 'Engagement Ceremony', 40000, 1),
 (10, 'College Reunion', 25000, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `event_booking`
---
-
-CREATE TABLE `event_booking` (
-  `b_id` int(2) NOT NULL,
-  `date` date NOT NULL,
-  `b_date` date NOT NULL,
-  `e_id` int(2) NOT NULL,
-  `cust_id` int(2) NOT NULL,
-  `time` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `event_booking`
@@ -233,46 +167,12 @@ INSERT INTO `event_booking` (`b_id`, `date`, `b_date`, `e_id`, `cust_id`, `time`
 (68, '2025-04-07', '2025-05-07', 3, 12, 'evening'),
 (69, '2025-04-10', '2025-05-10', 1, 6, 'morning');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `fav`
---
-
-CREATE TABLE `fav` (
-  `fav_id` int(5) NOT NULL,
-  `product_id` int(3) NOT NULL,
-  `user_id` int(5) NOT NULL,
-  `qty` int(3) DEFAULT 1,
-  `c_price` decimal(10,2) DEFAULT NULL,
-  `fav_c_price` decimal(10,2) DEFAULT NULL,
-  `p_price` decimal(10,2) DEFAULT NULL,
-  `fav_p_price` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `fav`
 --
 
 INSERT INTO `fav` (`fav_id`, `product_id`, `user_id`, `qty`, `c_price`, `fav_c_price`, `p_price`, `fav_p_price`) VALUES
 (9, 21, 3, 1, 90.00, 90.00, 100.00, 100.00);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_off`
---
-
-CREATE TABLE `order_off` (
-  `o_id` int(11) NOT NULL,
-  `order_date` date DEFAULT NULL,
-  `order_time` time DEFAULT NULL,
-  `cust_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `qty` int(11) DEFAULT NULL,
-  `total_price` int(6) DEFAULT NULL,
-  `service` varchar(9) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_off`
@@ -371,29 +271,6 @@ INSERT INTO `order_off` (`o_id`, `order_date`, `order_time`, `cust_id`, `product
 (90, '2025-03-28', '01:58:56', 26, 2, 2, 188, ' Takeaway'),
 (91, '2025-04-06', '06:08:15', 26, 2, 2, 188, 'Dining');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `product`
---
-
-CREATE TABLE `product` (
-  `product_id` int(3) NOT NULL,
-  `product_name` varchar(50) DEFAULT NULL,
-  `product_scale` varchar(100) DEFAULT NULL,
-  `product_des` varchar(500) DEFAULT NULL,
-  `product_keyword` varchar(500) DEFAULT NULL,
-  `product_cat` varchar(20) DEFAULT NULL,
-  `product_img` varchar(100) DEFAULT NULL,
-  `product_img2` varchar(100) DEFAULT NULL,
-  `product_img3` varchar(100) DEFAULT NULL,
-  `product_stock` int(3) DEFAULT NULL,
-  `product_price` int(5) DEFAULT NULL,
-  `product_off` int(2) DEFAULT NULL,
-  `product_c_price` int(5) DEFAULT NULL,
-  `status` int(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `product`
 --
@@ -422,21 +299,6 @@ INSERT INTO `product` (`product_id`, `product_name`, `product_scale`, `product_d
 (21, 'Veg Soup', '250 ml of Veg Soup', 'Veg soup is a comforting and nutritious dish made from a variety of vegetables simmered in vegetable broth or water. The soup is often blended to a smooth consistency or left chunky, depending on preference. Common ingredients include carrots, peas, beans, and tomatoes, seasoned with herbs and spices like garlic, ginger, and pepper. Veg soup is not only a warm and hearty option but also a great way to incorporate a range of vegetables into your diet, making it a popular starter or light meal.', 'Veg soup recipe Best veg soup near me Veg soup delivery Healthy vegetable soup Spicy veg soup Veg soup restaurant Veg soup takeout Veg soup ingredients Creamy veg soup Homemade veg soup', 'Starter', 'IMG_20241012_180628.jpg', 'IMG_20241012_180608.jpg', 'IMG_20241012_180645.jpg', 49, 100, 10, 90, 1),
 (22, 'Chicken 65', '200 grams of chicken 65', 'Chicken 65 is a popular South Indian appetizer made from marinated and deep-fried chicken pieces, known for their spicy and tangy flavor. The chicken is typically coated with a mixture of yogurt, spices, and red chili powder, then fried until crispy. Often garnished with curry leaves and served with a side of mint chutney or lemon wedges, Chicken 65 is a favorite for its bold taste and crunchy texture. Itâ€™s commonly enjoyed as a starter in restaurants and at parties, making it a beloved dish i', 'Chicken 65 recipe Best Chicken 65 near me Chicken 65 delivery Spicy Chicken 65 Chicken 65 restaurant Chicken 65 takeout Chicken 65 ingredients Authentic Chicken 65 Chicken 65 appetizer Crispy Chicken 65', 'Non Veg', 'IMG_20241012_181258.jpg', 'IMG_20241012_181245.jpg', 'IMG_20241012_181230.jpg', 50, 200, 10, 180, 1);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `user_id` int(5) NOT NULL,
-  `user_name` varchar(20) DEFAULT NULL,
-  `user_email` varchar(30) DEFAULT NULL,
-  `user_pass` varchar(20) DEFAULT NULL,
-  `mob_num1` bigint(10) DEFAULT NULL,
-  `mob_num2` bigint(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `user`
 --
@@ -461,23 +323,7 @@ INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_pass`, `mob_num1
 (17, 'Ishita Bansal', 'ishita.bansal999@gmail.com', 'Ishita@999', 8512345678, 8512345678),
 (18, 'Yash Thakur', 'yash.thakur000@gmail.com', 'Yash@000', 8412345678, 8412345678),
 (19, 'Sabari', 'sabari654@gmail.com', 'Sabari@2025', 9942891247, 9942891247);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_order`
---
-
-CREATE TABLE `user_order` (
-  `o_id` int(5) NOT NULL,
-  `product_id` int(3) DEFAULT NULL,
-  `user_id` int(5) DEFAULT NULL,
-  `qty` int(3) DEFAULT NULL,
-  `total_price` int(5) DEFAULT NULL,
-  `status` int(1) NOT NULL DEFAULT 0,
-  `o_date` datetime DEFAULT NULL,
-  `d_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(19, 'User', 'user654@gmail.com', 'User@123', 9874152630, 9874152630);
 
 --
 -- Dumping data for table `user_order`
@@ -574,134 +420,6 @@ INSERT INTO `user_order` (`o_id`, `product_id`, `user_id`, `qty`, `total_price`,
 (88, 16, 3, 4, 232, 0, '2025-03-29 07:16:25', '2025-03-29 08:16:25'),
 (89, 21, 3, 1, 90, 0, '2025-04-06 11:36:49', '2025-04-06 12:36:49'),
 (90, 4, 3, 2, 194, 0, '2025-04-06 12:22:49', '2025-04-06 13:22:49');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`a_id`);
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`cat_id`);
-
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`cust_id`);
-
---
--- Indexes for table `event`
---
-ALTER TABLE `event`
-  ADD PRIMARY KEY (`e_id`);
-
---
--- Indexes for table `event_booking`
---
-ALTER TABLE `event_booking`
-  ADD PRIMARY KEY (`b_id`);
-
---
--- Indexes for table `fav`
---
-ALTER TABLE `fav`
-  ADD PRIMARY KEY (`fav_id`);
-
---
--- Indexes for table `order_off`
---
-ALTER TABLE `order_off`
-  ADD PRIMARY KEY (`o_id`);
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `user_order`
---
-ALTER TABLE `user_order`
-  ADD PRIMARY KEY (`o_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `a_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `cat_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `event`
---
-ALTER TABLE `event`
-  MODIFY `e_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `event_booking`
---
-ALTER TABLE `event_booking`
-  MODIFY `b_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
-
---
--- AUTO_INCREMENT for table `fav`
---
-ALTER TABLE `fav`
-  MODIFY `fav_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `order_off`
---
-ALTER TABLE `order_off`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
-
---
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-  MODIFY `product_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `user_order`
---
-ALTER TABLE `user_order`
-  MODIFY `o_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

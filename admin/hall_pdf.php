@@ -1,6 +1,7 @@
 <?php
-require('./fpdf/fpdf.php');
-
+// Database Connection
+require('./assets/fpdf/fpdf.php');
+include '../Config/db_connection.php';
 // Fetch Data from Database
 $add_qry = "";
 if (isset($_POST['f_date']) && isset($_POST['t_date']) && !empty($_POST['t_date']) && !empty($_POST['f_date'])) {

@@ -1,0 +1,430 @@
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(1.05);
+}
+
+/* submit button start */
+input[type="submit"] {
+    width: 120px;
+    height: 45px;
+    border: 3px solid #315cfd;
+    border-radius: 30px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #58dcda;
+    font-size: 1em;
+    font-weight: 550;
+}
+
+input[type="submit"]:hover {
+    background: #315cfd;
+    color: white;
+    font-size: 1.2em;
+}
+
+/* submit button end */
+
+/* button icons start */
+.status {
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.status:hover {
+    transform: scale(1.3);
+    color: #2196f3;
+}
+
+.del_color {
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.edit_color {
+    color: #6c757d;
+}
+
+.edit_color:hover {
+    transform: scale(1.3);
+    color: #2196f3;
+}
+
+.del_color:hover {
+    color: #ff0000;
+    transform: scale(1.3);
+}
+
+/* button icons end */
+
+/* add Button start */
+.add_btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    margin-bottom: 5px;
+    background-color: white;
+    color: black;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+}
+
+.add_btn:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+.add_btn:active {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.stock_color {
+    color: gray;
+}
+
+.stock_color:hover {
+    transform: scale(1.3);
+    color: greenyellow;
+}
+
+.pdf_icon {
+    color: red;
+}
+
+/* add Button end */
+
+/* delete button start */
+.delete_btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: white;
+    color: black;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+}
+
+.delete_btn:hover {
+    letter-spacing: 3px;
+    background-color: hsl(0, 80%, 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(255 77 77) 0px 7px 29px 0px;
+}
+
+.delete_btn:active {
+    letter-spacing: 3px;
+    background-color: hsl(0, 80%, 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(255 77 77) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+/* delete button end */
+
+/* Next, Previous Button start */
+.next_btn {
+    font-family: "Lexend Deca", sans-serif;
+    border: none;
+    background-image: linear-gradient(to right, #007bff, #00d4ff, #00b894);
+    border: 2px solid gray;
+    color: #ffffff;
+    font-size: 17px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    padding: 13px 26px;
+    cursor: pointer;
+    transform: skew(15deg);
+    transition: all 0.5s;
+    margin-top: -8px;
+}
+
+.main-text {
+    display: inline-block;
+    transform: skew(-15deg);
+}
+
+.next_btn:hover {
+    transform: translateY(-3px);
+    background-image: linear-gradient(to right, #007bff, #00d4ff, #00b894);
+    border-radius: 26px;
+    animation: pulsate 1s infinite;
+}
+
+.next_btn:hover span {
+    display: inline-block;
+    transform: translateX(2px);
+    transition: all 0.5s;
+}
+
+.next_btn:focus {
+    outline: none;
+    border-radius: 26px;
+    animation: pulsate 1s infinite;
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 16px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+}
+
+/* next, Previous Button End */
+
+/* online and direct check box in monthly and daily sales start */
+.checkbox-wrapper-10 .tgl {
+    display: none;
+}
+
+.checkbox-wrapper-10 .tgl,
+.checkbox-wrapper-10 .tgl:after,
+.checkbox-wrapper-10 .tgl:before,
+.checkbox-wrapper-10 .tgl *,
+.checkbox-wrapper-10 .tgl *:after,
+.checkbox-wrapper-10 .tgl *:before,
+.checkbox-wrapper-10 .tgl+.tgl-btn {
+    box-sizing: border-box;
+}
+
+.checkbox-wrapper-10 .tgl::-moz-selection,
+.checkbox-wrapper-10 .tgl:after::-moz-selection,
+.checkbox-wrapper-10 .tgl:before::-moz-selection,
+.checkbox-wrapper-10 .tgl *::-moz-selection,
+.checkbox-wrapper-10 .tgl *:after::-moz-selection,
+.checkbox-wrapper-10 .tgl *:before::-moz-selection,
+.checkbox-wrapper-10 .tgl+.tgl-btn::-moz-selection,
+.checkbox-wrapper-10 .tgl::selection,
+.checkbox-wrapper-10 .tgl:after::selection,
+.checkbox-wrapper-10 .tgl:before::selection,
+.checkbox-wrapper-10 .tgl *::selection,
+.checkbox-wrapper-10 .tgl *:after::selection,
+.checkbox-wrapper-10 .tgl *:before::selection,
+.checkbox-wrapper-10 .tgl+.tgl-btn::selection {
+    background: none;
+}
+
+.checkbox-wrapper-10 .tgl+.tgl-btn {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox-wrapper-10 .tgl+.tgl-btn:after,
+.checkbox-wrapper-10 .tgl+.tgl-btn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+}
+
+.checkbox-wrapper-10 .tgl+.tgl-btn:after {
+    left: 0;
+}
+
+.checkbox-wrapper-10 .tgl+.tgl-btn:before {
+    display: none;
+}
+
+.checkbox-wrapper-10 .tgl:checked+.tgl-btn:after {
+    left: 50%;
+}
+
+.checkbox-wrapper-10 .tgl-flip+.tgl-btn {
+    padding: 2px;
+    transition: all 0.2s ease;
+    font-family: sans-serif;
+    perspective: 100px;
+}
+
+.checkbox-wrapper-10 .tgl-flip+.tgl-btn:after,
+.checkbox-wrapper-10 .tgl-flip+.tgl-btn:before {
+    display: inline-block;
+    transition: all 0.4s ease;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    line-height: 2em;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 4px;
+}
+
+.checkbox-wrapper-10 .tgl-flip+.tgl-btn:after {
+    content: attr(data-tg-on);
+    background: #02C66F;
+    transform: rotateY(-180deg);
+}
+
+.checkbox-wrapper-10 .tgl-flip+.tgl-btn:before {
+    background: #FF3A19;
+    content: attr(data-tg-off);
+}
+
+.checkbox-wrapper-10 .tgl-flip+.tgl-btn:active:before {
+    transform: rotateY(-20deg);
+}
+
+.checkbox-wrapper-10 .tgl-flip:checked+.tgl-btn:before {
+    transform: rotateY(180deg);
+}
+
+.checkbox-wrapper-10 .tgl-flip:checked+.tgl-btn:after {
+    transform: rotateY(0);
+    left: 0;
+    background: #7FC6A6;
+}
+
+.checkbox-wrapper-10 .tgl-flip:checked+.tgl-btn:active:after {
+    transform: rotateY(20deg);
+}
+
+/* online and direct check box in monthly and daily sales end */
+
+/* order chanage button (delivered or peding) :checkBoc start */
+.toggler {
+    width: 72px;
+    margin: 0;
+  }
+
+  .toggler input {
+    display: none;
+  }
+
+  .toggler label {
+    display: block;
+    position: relative;
+    width: 48px;
+    height: 20px;
+    border: 1px solid #d6d6d6;
+    border-radius: 36px;
+    background: #e4e8e8;
+    cursor: pointer;
+  }
+
+  .toggler label::after {
+    display: block;
+    border-radius: 100%;
+    background-color: #d7062a;
+    content: '';
+    animation-name: toggler-size;
+    animation-duration: 0.15s;
+    animation-timing-function: ease-out;
+    animation-direction: forwards;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+  }
+
+  .toggler label::after,
+  .toggler label .toggler-on,
+  .toggler label .toggler-off {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%) translateX(-50%);
+    transition: left 0.15s ease-in-out, background-color 0.2s ease-out, width 0.15s ease-in-out, height 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  }
+
+  .toggler input:checked+label::after,
+  .toggler input:checked+label .toggler-on,
+  .toggler input:checked+label .toggler-off {
+    left: 75%;
+  }
+
+  .toggler input:checked+label::after {
+    background-color: #50ac5d;
+    animation-name: toggler-size2;
+  }
+
+  .toggler .toggler-on,
+  .toggler .toggler-off {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .toggler input:checked+label .toggler-off,
+  .toggler input:not(:checked)+label .toggler-on {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .toggler .path {
+    fill: none;
+    stroke: #fefefe;
+    stroke-width: 7px;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+  }
+
+  @keyframes toggler-size {
+
+    0%,
+    100% {
+      width: 20px;
+      height: 20px;
+    }
+
+    50% {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @keyframes toggler-size2 {
+
+    0%,
+    100% {
+      width: 20px;
+      height: 20px;
+    }
+
+    50% {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  /* order chanage button (delivered or peding) :checkBoc end */

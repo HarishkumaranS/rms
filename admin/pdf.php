@@ -2,7 +2,7 @@
 // Check if this script is being accessed directly for PDF generation
 // database connection
 include '../Config/db_connection.php';
-
+require('./assets/fpdf/fpdf.php');
 // Check for connection error
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
@@ -50,9 +50,6 @@ if (isset($_POST['query'])) {
 
  // Start output buffering to avoid header issues
     ob_start();
-
-    // Include the FPDF library
-    require('./fpdf/fpdf.php');
 
     // Shop information
     $shopName = "FOOD WORLD Order Report";

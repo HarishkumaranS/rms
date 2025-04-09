@@ -106,28 +106,3 @@ function edit_profile()
     <?php
   }
 } ?>
-<script>
-  // validation for new pass and confirm pass
-  function checkPasswordMatch() {
-    var newPassword = document.getElementById("new_pass").value;
-    var confirmPassword = document.getElementById("con_pass").value;
-    var passwordHelp = document.getElementById("passwordHelp");
-
-    if (newPassword !== confirmPassword) {
-      passwordHelp.textContent = "Passwords do not match!";
-    } else {
-      passwordHelp.textContent = "";
-    }
-  }
-
-  function validatePassword() {
-    var newPassword = document.getElementById("new_pass").value;
-    var confirmPassword = document.getElementById("con_pass").value;
-
-    if (newPassword !== confirmPassword) {
-      alert("New Password and Confirm Password must be the same!");
-      return false; // Prevent form submission
-    }
-    return true; // Allow form submission
-  }
-</script>

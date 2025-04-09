@@ -75,7 +75,7 @@ if (isset($_GET['fav_order_product'])) {
                                     <div class="row g-0">
                                         <div class="col-md-4">
                                             <a href='second page.php?view=<?php echo $product_id; ?>'><img
-                                                    src="./admin/product_image/<?php echo $product_image; ?>"
+                                                    src="./admin/assets/image/product_image/<?php echo $product_image; ?>"
                                                     class="img-fluid rounded-start p-2" alt="<?php echo $product_name; ?>"></a>
                                         </div>
                                         <div class="col-md-8">

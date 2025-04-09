@@ -64,7 +64,7 @@ if (isset($_GET['order_product'])) {
                             <div class="card md-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="./admin/product_image/<?php echo $img; ?>" class="img-fluid rounded-start p-2"
+                                        <img src="./admin/assets/image/product_image/<?php echo $img; ?>" class="img-fluid rounded-start p-2"
                                             alt="<?php echo $product_name; ?>">
                                     </div>
                                     <div class="col-md-8">

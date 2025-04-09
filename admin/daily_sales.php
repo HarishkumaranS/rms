@@ -132,10 +132,3 @@ function daily_sales()
         echo "<script>window.location.href='index.php?login';</script>";
     }
 } ?>
-<script>
-function delayedSubmit() {
-    setTimeout(function() {
-        document.getElementById('orderForm').submit();
-    }, 400);
-}
-</script>

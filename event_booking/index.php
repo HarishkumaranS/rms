@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../image/logo.png" type="image/x-icon">
+    <link rel="icon" href="../assets/image/logo.png" type="image/x-icon">
     <title>Event Hall Booking</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- jQuery -->
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
     </div>
     <!-- Page Loader end  -->
     <header class="  p-3">
-        <img class="logo" src="../image/logo.png">
+        <img class="logo" src="../assets/image/logo.png">
         <h1 class="title text-light d-flex justify-content-center align-items-center">Event Booking</h1>
     </header>
     <div id="hallCarousel" class="carousel slide p-3" data-bs-ride="carousel">

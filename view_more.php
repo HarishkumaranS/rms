@@ -23,19 +23,19 @@ if (isset($_GET['view'])) {
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block  w-100 view_image" src='./admin/product_image/<?php echo $row['product_img']; ?>'
+            <img class="d-block  w-100 view_image" src='./admin/assets/image/product_image/<?php echo $row['product_img']; ?>'
               alt="First slide" height="225px" <?php if ($row['product_stock'] <= 0) {
                 echo 'id="blur"';
               } ?>>
           </div>
           <div class="carousel-item">
-            <img class="d-block  w-100 view_image" src="./admin/product_image/<?php echo $row['product_img2']; ?>"
+            <img class="d-block  w-100 view_image" src="./admin/assets/image/product_image/<?php echo $row['product_img2']; ?>"
               alt="Second slide" height="225px" <?php if ($row['product_stock'] <= 0) {
                 echo 'id="blur"';
               } ?>>
           </div>
           <div class="carousel-item">
-            <img class="d-block  w-100 view_image" src="./admin/product_image/<?php echo $row['product_img3']; ?>"
+            <img class="d-block  w-100 view_image" src="./admin/assets/image/product_image/<?php echo $row['product_img3']; ?>"
               alt="Third slide" height="225px" <?php if ($row['product_stock'] <= 0) {
                 echo 'id="blur"';
               } ?>>
@@ -86,7 +86,7 @@ if (isset($_GET['view'])) {
             <div>
               <div class='card p-0 m-0'>
                 <a href='second page.php?view=<?php echo $row_c['product_id']; ?>'> <img
-                    src='./admin/product_image/<?php echo $row_c['product_img']; ?>' height="100" width="150"
+                    src='./admin/assets/image/product_image/<?php echo $row_c['product_img']; ?>' height="100" width="150"
                     style="object-fit:contain;" align="center" <?php if ($row_c['product_stock'] <= 0) {
                       echo 'id="blur"';
                     } ?>></a>
@@ -233,7 +233,7 @@ if (isset($_GET['view'])) {
         <?php
       }
     } else {
-      echo "<h3 class='out_stock'>Out of stock";
+      echo "<h3 class='text-danger'>Out of stock";
     }
   }
 }
