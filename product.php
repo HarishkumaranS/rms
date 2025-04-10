@@ -140,9 +140,11 @@ function all_product()
     <div class='col-6 col-sm-4 col-md-3 col-lg-2 p-2'>
       <div class='card'>
         <a href='second page.php?view=<?php echo $product_id; ?>'><img class='card-img-top'
-            src='./admin/assets/image/product_image/<?php echo $product_img; ?>' alt='Card image cap' <?php if ($product_stock <= 0) {
+            src='./admin/assets/image/product_image/<?php echo $product_img;  ?>' alt='Card image cap text-center' <?php if ($product_stock <= 0) {
                  echo "id='blur'";
-               } ?>></a>
+               } ?> style="width: 235px;
+      height: 150px;
+      object-fit: contain;"></a>
         <div class='card-body'>
           <h5 class='card-title my-0 p_heading'><?php echo $product_name; ?></h5>
           <p class='card-text mb-0  product-scale'><?php echo $product_scale; ?></p>
