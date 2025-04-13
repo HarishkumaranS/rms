@@ -66,10 +66,10 @@ function offline_order()
                     $user_id = $row['cust_id'];
                     $add_qry = "  cust_id=$user_id";
                 } elseif ($num > 1) {
-                    echo "<script>alert('More one user like $user_name');
+                    echo "<script>alert('More one customer like $user_name');
             window.location.href='index.php?off_order';</script>";
                 } else {
-                    echo "<script>alert('No user like $user_name');
+                    echo "<script>alert('No customer like $user_name');
             window.location.href='index.php?off_order';</script>";
 
                 }

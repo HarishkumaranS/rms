@@ -103,13 +103,13 @@ function insert_product()
       // code for image uplode into database
       $img_name = $_FILES['product_img']['name'];
       $tmp_name = $_FILES['product_img']['tmp_name'];
-      move_uploaded_file($tmp_name, "product_image/$img_name");
+      move_uploaded_file($tmp_name, "./assets/image/product_image/$img_name");
       $img_name2 = $_FILES['product_img2']['name'];
       $tmp_name2 = $_FILES['product_img2']['tmp_name'];
-      move_uploaded_file($tmp_name2, "product_image/$img_name2");
+      move_uploaded_file($tmp_name2, "./assets/image/product_image/$img_name2");
       $img_name3 = $_FILES['product_img3']['name'];
       $tmp_name3 = $_FILES['product_img3']['tmp_name'];
-      move_uploaded_file($tmp_name3, "product_image/$img_name3");
+      move_uploaded_file($tmp_name3, "./assets/image/product_image/$img_name3");
       // select qry for already exists or not
       $result_select = "SELECT * FROM product WHERE product_name='$product_name'";
       $number = mysqli_query($con, $result_select);
@@ -123,7 +123,7 @@ function insert_product()
     ('$product_name','$product_scale','$product_des','$product_keyword','$product_cat','$img_name','$img_name2','$img_name3','$product_stock','$product_price','$product_off','$product_c_price')";
         $result = mysqli_query($con, $insert_qry);
         if ($result) {
-          echo "<script>alert('Successfully product data is inserted into Product')</script>";
+          echo "<script>alert('$product_name has been successfully added to the catagories')</script>";
         }
       }
 

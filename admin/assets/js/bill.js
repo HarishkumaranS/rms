@@ -1,76 +1,79 @@
-let productCount = 1;
-// add row
-function addProductRow() {
-    const table = document.getElementById('productTable');
-    const row = table.insertRow(-1);
-    row.setAttribute('id', `row_${productCount}`);
 
-    row.innerHTML = `
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>
-        <select class="productDropdown" name="product_id[]" id="productDropdown_${productCount}" style="width: 300px;" required>
-            <option value="">Select a product</option>
-            <?php echo $productOptions; ?>
-        </select>
-    </td>
-    <td>
-        <input type="number" class="form-control" name="product_qty[]" id="product_quantity_${productCount}" min="1" required>
-    </td>
-`;
 
-    productCount++;
+    function updateTotal() {
+        let total = 0;
 
-    // Initialize select2 on the new dropdown
-    // search box for product second row to last
-    $(`#productDropdown_${productCount - 1}`).select2({
-        placeholder: "Search for a product",
-        allowClear: true
-    });
-}
-// Remove a specific row
-function removeProductRow(rowId) {
-    const table = document.getElementById("productTable");
-    if (table.rows.length > 2) { // Ensure at least one row remains (excluding header)
-        const row = document.getElementById(`row_${rowId}`);
-        if (row) {
-            row.parentNode.removeChild(row);
+        // Loop through each row and calculate the total for each product
+        let rows = document.querySelectorAll('#productTable tr');
+        rows.forEach((row, index) => {
+            let productDropdown = row.querySelector('.productDropdown');
+            let quantityInput = row.querySelector('input[type="number"]');
+
+            if (productDropdown && quantityInput) {
+                let selectedOption = productDropdown.options[productDropdown.selectedIndex];
+                if (selectedOption.value === "") return; // Skip empty selections
+
+                let price = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+                let stock = parseInt(selectedOption.getAttribute('data-stock')) || 0;
+                let quantity = parseInt(quantityInput.value) || 0;
+
+                // Check if quantity exceeds stock
+                if (quantity > stock) {
+                    alert(`Quantity exceeds available stock (${stock}). It has been adjusted automatically.`);
+                    quantity = stock;
+                    quantityInput.value = stock; // Update the input field
+                }
+
+                // Calculate the total for the current row
+                total += price * quantity;
+                console.log("Row total: " + (price * quantity)); // Debugging line
+            }
+        });
+
+        // qrcode image start
+        const upi_id = "8838263645@ptaxis";
+        const name = "FOOD WORLD";
+        const amount = total;
+        const currency = "INR";
+        const note = "Thanks for the meal - Food World";
+        const upi_url = `upi://pay?pa=${upi_id}&pn=${encodeURIComponent(name)}&am=${amount}&cu=${currency}&tn=${encodeURIComponent(note)}`;
+        const qr_url = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(upi_url)}&size=300x300`;
+        document.getElementById("paymentText").textContent = `Make a ₹${amount} Payment by Scanning`;
+        document.getElementById("qrCodeImage").src = qr_url;
+        // qrcode image End
+        // Update the total amount display
+        let totalAmountDisplay = document.getElementById('totalAmount_0');
+        if (totalAmountDisplay) {
+            totalAmountDisplay.textContent = "₹" + total.toFixed(2);
         }
-    } else {
-        alert("At least one row must remain in the table.");
-    }
-}
+        console.log("Total: ₹" + total.toFixed(2)); // Debugging line
 
-// Remove the last added row
-function removeLastRow() {
-    const table = document.getElementById("productTable");
-    if (table.rows.length > 2) { // Ensure at least one row remains (excluding header)
-        table.deleteRow(-1); // Delete the last row
-        productCount--; // Decrement the counter
-    } else {
-        alert("At least one row must remain in the table.");
-    }
-}
-// Event listeners for shortcuts
-document.addEventListener('keydown', function (event) {
-    // Ctrl + Enter to add a row
-    if (event.ctrlKey && event.key === 'Enter') {
-        event.preventDefault(); // Prevent default browser action
-        addProductRow();
+        // Show or hide the amount div based on total
+        let amountDiv = document.getElementById('amount');
+        if (total > 0) {
+            amountDiv.classList.remove('d-none');  // Show the amount div
+        } else {
+            amountDiv.classList.add('d-none');  // Hide the amount div
+        }
     }
 
-    // Ctrl + Backspace to remove the last row
-    if (event.ctrlKey && event.key === 'Backspace') {
-        event.preventDefault(); // Prevent default browser action
-        removeLastRow();
-    }
-});
-// search box for product first row
-$(document).ready(function () {
 
-    $("#productDropdown").select2({
-        placeholder: "Search for a product",
-        allowClear: true
-    });
-});
+    // Remove the last added row
+    function removeLastRow() {
+        const table = document.getElementById("productTable");
+        if (table.rows.length > 2) {
+            table.deleteRow(-1);
+            productCount--;
+            updateTotal();
+        } else {
+            alert("At least one row must remain in the table.");
+        }
+    }
+    // Open QR modal with Shift + G
+    document.addEventListener('keydown', function (e) {
+        if (e.altKey && e.shiftKey && e.key.toLowerCase() === 'g') {
+            document.getElementById('qrModal').style.display = 'flex';
+        } else if (e.key === 'Escape') {
+            document.getElementById('qrModal').style.display = 'none';
+        }
+    })

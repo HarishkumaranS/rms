@@ -39,7 +39,7 @@ function insert_event()
         $qry = "INSERT INTO event(e_name,e_cost)VALUE('$event_name','$event_cost')";
         $result = mysqli_query($con, $qry);
         if ($result) {
-          echo "<script>alert('Successfully $event_name is add into Event table');</script>";
+          echo "<script>alert('$event_name has been successfully added to the Event');</script>";
         }
       }
 

@@ -34,7 +34,7 @@ function insert_cat()
         $qry = "INSERT INTO categories(cat_title)VALUE('$cat_name')";
         $result = mysqli_query($con, $qry);
         if ($result) {
-          echo "<script>alert('Successfully $cat_name is inserted into categories')</script>";
+          echo "<script>alert('$cat_name has been successfully added to the Catagories')</script>";
         }
       }
 

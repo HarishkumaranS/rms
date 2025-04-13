@@ -32,13 +32,14 @@ include "./assets/include/include.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <!-- page loder -->
-    <link rel="stylesheet" href="../assets/page-loader/style.css">
+    <!-- <link rel="stylesheet" href="../assets/page-loader/style.css"> -->
     <!-- Include CSS File -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/component.css">
     <link rel="stylesheet" href="./assets/css/particals.css">
-
+    <link rel="stylesheet" href="./assets/css/qr_code.css">
 </head>
+
 <body>
     <!-- Page Loader start  -->
     <div class="loader-container" id="loader">
@@ -99,11 +100,11 @@ include "./assets/include/include.php";
                                     } else {
                                         echo 'href="index.php?login"';
                                     } ?>>
-                <?php if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
-                    echo "<i class='fa-solid fa-sign-out-alt sidebar_icon'></i> Logout";
-                } else {
-                    echo "<i class='fa-solid fa-sign-in-alt sidebar_icon'></i> Login";
-                } ?>
+                 <?php if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
+                     echo "<i class='fa-solid fa-sign-out-alt sidebar_icon'></i> Logout";
+                 } else {
+                     echo "<i class='fa-solid fa-sign-in-alt sidebar_icon'></i> Login";
+                 } ?>
                                     </a>
                                 </li>
                             </ul>

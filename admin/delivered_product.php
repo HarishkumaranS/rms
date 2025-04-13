@@ -88,10 +88,10 @@
                         $product_id = $row['product_id'];
                         $add_qry = " AND product_id=$product_id";
                     } elseif ($num > 1) {
-                        echo "<script>alert('More one user like $user_name');
+                        echo "<script>alert('More one  Product $product_name');
             window.location.href='index.php?delivered_order';</script>";
                     } else {
-                        echo "<script>alert('No user like $user_name');
+                        echo "<script>alert('No Product like $product_name');
             window.location.href='index.php?delivered_order';</script>";
 
                     }
