@@ -8,7 +8,7 @@ function bill()
     if (isset($_SESSION['admin']) || isset($_SESSION['biller'])) {
         global $con;
         ?>
-        <!-- Modal -->
+        <!--QR code Modal -->
         <div id="qrModal" class="qr-modal">
             <div class="qr-content">
                 <h3 id="paymentText" style="color: gray; margin-bottom: 15px;"></h3>
@@ -16,6 +16,7 @@ function bill()
             </div>
         </div>
         <h4 align="center"><b>Counter Billing</b></h4>
+        <!-- display price -->
         <div id="amount" class="alert alert-info d-none  form-outline m-3 ">
             <strong>Total amount : ₹ <span id="totalAmount_0"></span><span class="text-primary"> QR Code : Alt + Shift +
                     G</span></strong>

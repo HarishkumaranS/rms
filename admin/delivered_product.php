@@ -21,9 +21,7 @@
                                 <div class="form-outline w-10 m-1">
                                     <select name="select" class="form-select w-100" required>
                                         <option value="">-Select Categories-</option>
-                                        <option value="o_id">Order ID</option>
-                                        <option value="o_date">Order Date</option>
-                                        <option value="d_date">Delivered Date</option>
+                                        <option value="d_date">Date</option>
                                         <option value="u_name">User Name</option>
                                         <option value="p_name">Product Name</option>
                                 </div>
@@ -47,18 +45,7 @@
             <?php
             $add_qry = "";
             if (isset($_POST['submit'])) {
-                if ($_POST['select'] == 'o_id') {
-                    $o_id = (int) $_POST['value'];
-                    if (is_int($o_id)) {
-                        $add_qry = " AND o_id=$o_id";
-                    } else {
-                        echo "<script>alert('Invalid input...!!');
-            window.location.href='index.php?delivered_order';</script>";
-                    }
-                } elseif ($_POST['select'] == 'o_date') {
-                    $o_date = $_POST['value'];
-                    $add_qry = " AND DATE(o_date)='$o_date'";
-                } elseif ($_POST['select'] == 'd_date') {
+                if ($_POST['select'] == 'd_date') {
                     $d_date = $_POST['value'];
                     $add_qry = " AND DATE(d_date)='$d_date'";
                 } elseif ($_POST['select'] == 'u_name') {

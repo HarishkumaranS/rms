@@ -5,19 +5,95 @@ function pending_order()
     global $con;
     ?>
     <h4 align="center"><b>Pending Order</b></h4>
-    <!-- Modal -->
+    <!-- Qr code Modal -->
     <div id="qrModal" class="qr-modal">
       <div class="qr-content">
         <h3 id="paymentText" style="color: gray; margin-bottom: 15px;"></h3>
         <img class="qr-code" id="qrCodeImage" src="" alt="UPI Payment QR Code">
       </div>
     </div>
+
+    <form action="" method="post">
+      <table align='center' class='table table-striped table-light'>
+        <thead class='thead-dark'>
+          <tr>
+            <th>Select</th>
+            <th>Value</th>
+            <th>Sort List</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="form-outline w-10 m-1">
+                <select name="select" class="form-select w-100" required>
+                  <option value="">-Select Categories-</option>
+                  <option value="u_name">User Name</option>
+                  <option value="p_name">Product Name</option>
+              </div>
+            </td>
+            <td>
+              <div class="form-outline w-10 m-1">
+                <input type="text" name="value" class="form-control w-100" placeholder="Enter the value" value="<?php if (isset($_POST['value'])) {
+                  echo $_POST['value'];
+                } ?>" required>
+              </div>
+            </td>
+            <td>
+              <div class="form-outline w-10 m-1">
+                <input type="submit" name="filter" class="btn btn-info" value="Sort List">
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+    <!-- display price -->
     <div id="delivery_price" class="alert alert-info  d-none form-outline m-3 ">
       <strong>Total amount : ₹ <span id="totalAmount_0"></span><span class="text-primary"> QR Code : Alt + Shift +
           G</span></strong>
     </div>
     <?php
-    $select_qry = "SELECT * FROM user_order WHERE status=0";
+    $add_qry=null;
+    if (isset($_POST['filter'])) {
+      if ($_POST['select'] == 'u_name') {
+        $user_name = $_POST['value'];
+        $user_qry = "SELECT user_id FROM user WHERE user_name like '%$user_name%'";
+        $reslut_qry = mysqli_query($con, $user_qry);
+        $row = mysqli_fetch_array($reslut_qry);
+        $num = mysqli_num_rows($reslut_qry);
+        if ($num == 1) {
+          $user_id = $row['user_id'];
+          $add_qry = " AND user_id=$user_id";
+        } elseif ($num > 1) {
+          echo "<script>alert('More one user like $user_name');
+            window.location.href='index.php?delivered_order';</script>";
+        } else {
+          echo "<script>alert('No user like $user_name');
+            window.location.href='index.php?delivered_order';</script>";
+
+        }
+      } elseif ($_POST['select'] == 'p_name') {
+        $product_name = $_POST['value'];
+        $product_qry = "SELECT product_id FROM product WHERE product_name like '%$product_name%'";
+        $reslut_qry = mysqli_query($con, $product_qry);
+        $row = mysqli_fetch_array($reslut_qry);
+        $num = mysqli_num_rows($reslut_qry);
+        if ($num == 1) {
+          $product_id = $row['product_id'];
+          $add_qry = " AND product_id=$product_id";
+        } elseif ($num > 1) {
+          echo "<script>alert('More one  Product $product_name');
+window.location.href='index.php?delivered_order';</script>";
+        } else {
+          echo "<script>alert('No Product like $product_name');
+window.location.href='index.php?delivered_order';</script>";
+
+        }
+      }
+    }
+    $select_qry = "SELECT * FROM user_order WHERE status=0". $add_qry;
     $result_select = mysqli_query($con, $select_qry);
     $num = mysqli_num_rows($result_select);
     $s_no = 0;
