@@ -83,3 +83,12 @@ document.addEventListener("keydown", function (event) {
         document.getElementById("graph").click(); // Triggers the submit button
     }
 });
+
+// Open QR modal with Shift + G
+    document.addEventListener('keydown', function (e) {
+        if (e.altKey && e.shiftKey && e.key.toLowerCase() === 'g') {
+            document.getElementById('qrModal').style.display = 'flex';
+        } else if (e.key === 'Escape') {
+            document.getElementById('qrModal').style.display = 'none';
+        }
+    })
